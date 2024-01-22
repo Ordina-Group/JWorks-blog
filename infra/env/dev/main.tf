@@ -10,4 +10,5 @@ module "s3_uploader" {
   source                = "../../modules/s3-uploader"
   bucket_name           = module.s3_static_hosting.bucket_name
   source_file_directory = "../../../_site"
+  depends_on            = [module.s3_static_hosting]
 }
