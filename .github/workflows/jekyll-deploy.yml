@@ -3,7 +3,7 @@ name: Deploy Jekyll site to Pages
 on:
   push:
     branches:
-     - source
+     - feaure/deploy-to-aws-static-hosting
   workflow_dispatch:
 
 permissions:
