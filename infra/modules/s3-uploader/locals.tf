@@ -26,11 +26,16 @@ locals {
     "stl"         = "application/vnd.ms-pki.stl"
     "mp4"         = "audio/mp4"
     "yml"         = "application/x-yaml"
+    "yaml"        = "application/x-yaml"
+    "psd"         = "image/vnd.adobe.photoshop"
     "gif"         = "image/gif"
     "tf"          = "text/plain"
     "otf"         = "font/otf"
     "JPG"         = "image/jpeg"
     "htc"         = "text/x-component"
     "drawio"      = "application/x-drawio"
+    "mov"         = "video/quicktime"
+    "MOV"         = "video/quicktime"
+    "build"       = "text/plain"
   }
 }
