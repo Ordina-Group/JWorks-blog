@@ -1,6 +1,9 @@
 name: Destroy DEV env
 
 on:
+  push:
+    branches:
+      - feaure/deploy-to-aws-static-hosting
   workflow_dispatch:
 
 permissions:
@@ -60,6 +63,6 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        run: terraform apply -auto-approve
+        run: terraform destroy -auto-approve
         working-directory: infra/env/dev
 
