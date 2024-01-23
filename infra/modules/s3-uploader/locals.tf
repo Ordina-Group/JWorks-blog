@@ -20,5 +20,16 @@ locals {
     "webmanifest" = "application/manifest+json"
     "pdf"         = "application/pdf"
     "xml"         = "application/xml"
+    "webp"        = "image/webp"
+    "md"          = "text/plain"
+    "PNG"         = "image/png"
+    "stl"         = "application/vnd.ms-pki.stl"
+    "mp4"         = "audio/mp4"
+    "yml"         = "application/x-yaml"
+    "gif"         = "image/gif"
+    "tf"          = "text/plain"
+    "otf"         = "font/otf"
+    "JPG"         = "image/jpeg"
+    "htc"         = "text/x-component"
   }
 }
