@@ -1,9 +1,6 @@
 name: Deploy Jekyll site to AWS static hosting
 
 on:
-  push:
-    branches:
-     - feaure/deploy-to-aws-static-hosting
   workflow_dispatch:
 
 permissions:
