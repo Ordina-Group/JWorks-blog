@@ -31,5 +31,6 @@ locals {
     "otf"         = "font/otf"
     "JPG"         = "image/jpeg"
     "htc"         = "text/x-component"
+    "drawio"      = "application/x-drawio"
   }
 }
