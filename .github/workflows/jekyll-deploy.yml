@@ -58,16 +58,13 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup git creds
         run: git config --global url."https://${{ vars.ORDINA_GROUP_BOT_APP_ID }}:${{ steps.repository-token.outputs.token }}@github".insteadOf https://github
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: blog
-          path: blog
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@5fd3084fc36e372ff1fff382a39b10d03659f355 # v2.2.0
         with:
           role-to-assume: ${{ env.AWS_ROLE }}
           aws-region: eu-west-1
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@a1502cd9e758c50496cc9ac5308c4843bcd56d36 # v3.0.0
 
@@ -99,6 +96,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: blog
+          path: blog
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@5fd3084fc36e372ff1fff382a39b10d03659f355 # v2.2.0
+        with:
+          role-to-assume: ${{ env.AWS_ROLE }}
+          aws-region: eu-west-1
       - name: Upload file to s3
         run: aws s3 sync ./blog s3://blog.ordina-jworks.io
 
