@@ -4,6 +4,7 @@ module "s3_static_hosting" {
   bucket_name                  = "blog.ordina-jworks.io"
   region                       = var.aws_region
   root_domain_name             = "tst.ordina-jworks.io"
+  access_control_allow_headers = "blog"
   access_control_allow_origins = ["https://blog.ordina-jworks.io"]
 
 }
