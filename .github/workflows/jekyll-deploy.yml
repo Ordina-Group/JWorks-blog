@@ -94,7 +94,7 @@ jobs:
         working-directory: infra/env/dev
   upload:
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: [build, deploy]
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
