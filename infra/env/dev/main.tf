@@ -8,6 +8,7 @@ module "s3_static_hosting" {
   access_control_allow_methods = ["GET"]
   access_control_allow_origins = ["https://blog.tst.ordina-jworks.io"]
   content_security_policy      = var.content_security_policy
+  cross_origin_embedder_policy = "unsafe-none"
 }
 
 #module "s3_uploader" {
