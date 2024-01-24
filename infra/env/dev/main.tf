@@ -1,5 +1,5 @@
 module "s3_static_hosting" {
-  source                       = "github.com/Ordina-Group/jworks-aws-infra.git//landing-zones/static-website?ref=7bb988f450ee5574c21c1102a171f6cd7a2ca032"
+  source                       = "github.com/Ordina-Group/jworks-aws-infra.git//landing-zones/static-website?ref=6343050c26cd8bf9136dba2697468a0a07b55a42"
   app_name                     = "blog"
   bucket_name                  = "blog.ordina-jworks.io"
   region                       = var.aws_region
