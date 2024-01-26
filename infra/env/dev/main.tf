@@ -13,6 +13,13 @@ module "s3_static_hosting" {
   cross_origin_resource_policy = "unsafe-none"
 }
 
+module "waf" {
+  source          = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=c9697e8f9a19ed8401c315be9241b5050c50ed1d"
+  waf_name        = "waf-jworks-tech-blog"
+  waf_description = "waf jworks tech blog"
+  waf_scope       = "CLOUDFRONT"
+}
+
 #module "s3_uploader" {
 #  source                = "../../modules/s3-uploader"
 #  bucket_name           = module.s3_static_hosting.bucket_name
