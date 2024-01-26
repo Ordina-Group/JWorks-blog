@@ -18,7 +18,7 @@ module "waf" {
   source            = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=a28af18fe8e12bf1c3c48ae925cde4b13bcc5ab1"
   project_name      = "waf-jworks-tech-blog"
   cloudfront        = true
-  blocked_countries = ["BE", "NL"]
+  blocked_countries = ["RU", "UK", "FR"]
 }
 
 
