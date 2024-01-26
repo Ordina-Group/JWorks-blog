@@ -11,6 +11,7 @@ module "s3_static_hosting" {
   cross_origin_embedder_policy = "unsafe-none"
   cross_origin_opener_policy   = "unsafe-none"
   cross_origin_resource_policy = "unsafe-none"
+  web_acl_id                   = null
 }
 
 module "waf" {
