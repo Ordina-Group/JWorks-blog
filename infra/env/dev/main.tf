@@ -14,7 +14,7 @@ module "s3_static_hosting" {
 }
 
 module "waf" {
-  source          = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=3e310c13611894eaa3e86350ca57815308c4b7a3"
+  source          = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=0518392e6206e4799fa5109eda2e059c60c4cd13"
   waf_name        = "waf-jworks-tech-blog"
   waf_description = "waf jworks tech blog"
   waf_scope       = "CLOUDFRONT"
