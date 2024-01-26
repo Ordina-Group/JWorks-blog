@@ -14,10 +14,9 @@ module "s3_static_hosting" {
 }
 
 module "waf" {
-  source          = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=06cf8d43ef014dbdc3f266a322edcc58577ab14c"
-  waf_name        = "waf-jworks-tech-blog"
-  waf_description = "waf jworks tech blog"
-  waf_scope       = "CLOUDFRONT"
+  source          = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=55424c934c47a662ee3b62c659bdb9e49473b204"
+  project_name        = "waf-jworks-tech-blog"
+  cloudfront = true
 }
 
 #module "s3_uploader" {
