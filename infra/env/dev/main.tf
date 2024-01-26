@@ -1,5 +1,5 @@
 module "s3_static_hosting" {
-  source                       = "github.com/Ordina-Group/jworks-aws-infra.git//landing-zones/static-website?ref=12ca01a8d040565139ddb709b603af58e58558b7"
+  source                       = "github.com/Ordina-Group/jworks-aws-infra.git//landing-zones/static-website?ref=245ddb8018f8b2777ec36b4207b65e9d21b641bf"
   app_name                     = "blog"
   bucket_name                  = "blog.ordina-jworks.io"
   region                       = var.aws_region
@@ -14,10 +14,12 @@ module "s3_static_hosting" {
 }
 
 module "waf" {
-  source       = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=ac111beba3bef5462c5423118cab7cd23686f548"
-  project_name = "waf-jworks-tech-blog"
-  cloudfront   = true
+  source            = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=a28af18fe8e12bf1c3c48ae925cde4b13bcc5ab1"
+  project_name      = "waf-jworks-tech-blog"
+  cloudfront        = true
+  blocked_countries = ["BE", "NL"]
 }
+
 
 #module "s3_uploader" {
 #  source                = "../../modules/s3-uploader"
