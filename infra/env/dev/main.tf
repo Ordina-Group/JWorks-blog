@@ -15,7 +15,7 @@ module "s3_static_hosting" {
 }
 
 module "waf" {
-  source            = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=468fe471764b319814ae8fcde279529d9ddf172d"
+  source            = "github.com/Ordina-Group/jworks-aws-infra.git//waf-module?ref=8ac9e2e5b93b740c82fae06ad0e810eb454470a2"
   project_name      = "waf-jworks-tech-blog"
   cloudfront        = true
   blocked_countries = ["RU", "GB", "FR"]
