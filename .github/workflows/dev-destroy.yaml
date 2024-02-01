@@ -1,6 +1,9 @@
 name: Destroy DEV env
 
 on:
+  push:
+    branches:
+      - feaure/deploy-to-aws-static-hosting
   workflow_dispatch:
 
 permissions:
