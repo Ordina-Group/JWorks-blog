@@ -106,7 +106,7 @@ jobs:
           role-to-assume: ${{ env.AWS_ROLE }}
           aws-region: eu-west-1
       - name: Upload file to s3
-        run: aws s3 sync ./blog s3://blog.ordina-jworks.io
+        run: aws s3 sync ./blog s3://blog.tst.ordina-jworks.io
 
 
 
