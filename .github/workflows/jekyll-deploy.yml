@@ -52,7 +52,7 @@ jobs:
           app-id: ${{ vars.ORDINA_GROUP_BOT_APP_ID }}
           private-key: ${{ secrets.ORDINA_GROUP_BOT_CERT }}
           owner: ${{ github.repository_owner }}
-          repositories: "jworks-aws-infra,jworks-terraform-modules"
+          repositories: "jworks-terraform-modules"
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup git creds
