@@ -1,5 +1,5 @@
 module "s3_static_hosting" {
-  source                       = "github.com/Ordina-Group/jworks-terraform-modules.git//static-website?ref=dd28622582e63b60333796518b3f8f1225e2bf94"
+  source                       = "github.com/Ordina-Group/jworks-terraform-modules.git//static-website?ref=53dd92ca1c4b439be0532bd0ed23e9dc4497515b"
   app_name                     = "blog"
   bucket_name                  = "blog.tst.ordina-jworks.io"
   region                       = var.aws_region
@@ -15,7 +15,7 @@ module "s3_static_hosting" {
 }
 
 module "waf" {
-  source              = "github.com/Ordina-Group/jworks-terraform-modules.git//waf-module?ref=0753be69ec0d764b51b368c62454c2fbde8ccbc6"
+  source              = "github.com/Ordina-Group/jworks-terraform-modules.git//waf-module?ref=53dd92ca1c4b439be0532bd0ed23e9dc4497515b"
   project_name        = "waf-jworks-tech-blog"
   cloudfront          = true
   blocked_countries   = ["RU"]
