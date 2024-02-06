@@ -6,7 +6,7 @@ Resources:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     Properties:
-      BucketName: "jworks-tech-blog-terraform-state"
+      BucketName: "jworks-tech-blog-dev-terraform-state"
       VersioningConfiguration:
         Status: Enabled
       BucketEncryption:
@@ -17,7 +17,7 @@ Resources:
   TerraformLockTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: "jworks_tech_blog_terraform_locks"
+      TableName: "jworks_tech_blog_dev_terraform_locks"
       AttributeDefinitions:
         - AttributeName: LockID
           AttributeType: S

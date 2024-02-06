@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "jworks-tech-blog-dev-terraform-state"
+    bucket = "jworks-tech-blog-prd-terraform-state"
     key    = "blog.tfstate"
     region = "eu-west-1"
   }
