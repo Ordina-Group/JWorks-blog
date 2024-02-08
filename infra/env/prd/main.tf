@@ -3,10 +3,10 @@ module "s3_static_hosting" {
   app_name                     = "blog"
   bucket_name                  = "blog.ordina-jworks.io"
   region                       = var.aws_region
-  root_domain_name             = "tst.ordina-jworks.io"
+  root_domain_name             = "dev.ordina-jworks.io"
   access_control_allow_headers = ["blog"]
   access_control_allow_methods = ["GET"]
-  access_control_allow_origins = ["https://blog..ordina-jworks.io"]
+  access_control_allow_origins = ["https://blog.dev.ordina-jworks.io"]
   content_security_policy      = var.content_security_policy
   cross_origin_embedder_policy = "unsafe-none"
   cross_origin_opener_policy   = "unsafe-none"

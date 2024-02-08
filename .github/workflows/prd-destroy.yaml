@@ -1,4 +1,4 @@
-name: Destroy DEV env
+name: Destroy PRD env
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   id-token: write
 
 env:
-  AWS_ROLE: 'arn:aws:iam::831947081981:role/JworksTechBlogGithubRole'
+  AWS_ROLE: 'arn:aws:iam::264585740784:role/JworksTechBlogGithubRole'
 
 jobs:
   destroy:
@@ -36,7 +36,7 @@ jobs:
           aws-region: eu-west-1
 
       - name: Remove files from s3
-        run: aws s3 rm --recursive s3://blog.tst.ordina-jworks.io
+        run: aws s3 rm --recursive s3://blog.ordina-jworks.io
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@a1502cd9e758c50496cc9ac5308c4843bcd56d36 # v3.0.0
@@ -44,25 +44,25 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: infra/env/dev
+        working-directory: infra/env/prd
 
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
-        working-directory: infra/env/dev
+        working-directory: infra/env/prd
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        working-directory: infra/env/dev
+        working-directory: infra/env/prd
 
       - name: Terraform Plan Destroy
         id: plan-destroy
         run: terraform plan
-        working-directory: infra/env/dev
+        working-directory: infra/env/prd
 
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
-        working-directory: infra/env/dev
+        working-directory: infra/env/prd
 

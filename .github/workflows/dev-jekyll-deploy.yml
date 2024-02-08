@@ -1,4 +1,4 @@
-name: Deploy Jekyll site to AWS static hosting
+name: Deploy Jekyll site to AWS static hosting DEV env
 
 on:
   push:
@@ -105,7 +105,7 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_ROLE }}
           aws-region: eu-west-1
-      - name: Upload file to s3
+      - name: Upload files to s3
         run: aws s3 sync ./blog s3://blog.tst.ordina-jworks.io
 
 

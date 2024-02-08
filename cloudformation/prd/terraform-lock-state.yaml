@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Setup a S3 bucket store terraform state file and DynamoDB lock table to lock state
+
+Resources:
+  TerraformBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: "jworks-tech-blog-prd-terraform-state"
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  TerraformLockTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "jworks_tech_blog_prd_terraform_locks"
+      AttributeDefinitions:
+        - AttributeName: LockID
+          AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: LockID
+          KeyType: HASH
+
+Outputs:
+  TerraformBucket:
+    Description: The S3 bucket name wherefor your terraform statefiles
+    Value: !Ref TerraformBucket
+  DynamoLockTable:
+    Description: The dynamodb table for your terraform locks
+    Value: !Select [1, !Split ['/', !GetAtt TerraformLockTable.Arn]]
