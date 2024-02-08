@@ -3,7 +3,7 @@ name: Deploy blog to AWS DEV env
 on:
   push:
     branches:
-     - feaure/deploy-to-aws-static-hosting
+     - source
   workflow_dispatch:
 
 permissions:
