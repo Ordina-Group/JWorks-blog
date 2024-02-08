@@ -1,4 +1,4 @@
-name: Deploy Jekyll site to AWS static hosting DEV env
+name: Deploy blog to AWS DEV env
 
 on:
   push:

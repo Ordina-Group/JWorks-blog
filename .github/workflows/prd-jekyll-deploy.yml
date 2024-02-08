@@ -1,4 +1,4 @@
-name: Deploy Jekyll site to AWS static hosting PRD env
+name: Deploy blog to AWS PRD env
 
 on:
   workflow_dispatch:
