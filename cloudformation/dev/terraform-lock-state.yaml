@@ -13,23 +13,7 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
-
-  TerraformLockTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: "jworks_tech_blog_dev_terraform_locks"
-      AttributeDefinitions:
-        - AttributeName: LockID
-          AttributeType: S
-      BillingMode: PAY_PER_REQUEST
-      KeySchema:
-        - AttributeName: LockID
-          KeyType: HASH
-
 Outputs:
   TerraformBucket:
     Description: The S3 bucket name wherefor your terraform statefiles
     Value: !Ref TerraformBucket
-  DynamoLockTable:
-    Description: The dynamodb table for your terraform locks
-    Value: !Select [1, !Split ['/', !GetAtt TerraformLockTable.Arn]]
