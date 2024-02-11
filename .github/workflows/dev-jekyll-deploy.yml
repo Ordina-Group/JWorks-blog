@@ -1,9 +1,6 @@
 name: Deploy blog to AWS DEV env
 
 on:
-  push:
-    branches:
-     - source
   workflow_dispatch:
 
 permissions:

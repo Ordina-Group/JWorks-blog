@@ -1,6 +1,9 @@
 name: Deploy blog to AWS PRD env
 
 on:
+  push:
+    branches:
+      - source
   workflow_dispatch:
 
 permissions:
