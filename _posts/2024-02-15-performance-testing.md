@@ -70,9 +70,27 @@ When undertaking Java performance testing, it's vital to consider various compon
 
 ## Performance testing with Gatling
 
+Gatling is a powerful open-source tool designed for performance testing, renowned for its efficiency and flexibility. It allows developers to simulate real-world scenarios and assess the performance of their applications under various load conditions. Gatling uses a scenario-based approach, where users define test scenarios using a simple yet expressive DSL (Domain-Specific Language). These scenarios can simulate user interactions, such as browsing web pages, submitting forms, or making API calls.
+
+Exploring WAF Impact Through Load Testing
+
+In a recent endeavor, we orchestrated a load test on two web servers, each with distinct configurations regarding Web Application Firewall (WAF). One server boasted the protective layer of a WAF, while the other operated without such fortification. Our objective? To decipher the repercussions of integrating a WAF within our infrastructure.
+
+Methodology
+
+Harnessing Gatling's prowess, we simulated 1000 concurrent users engaging with our web servers. This load testing aimed at gauging each server's prowess in managing simultaneous requests, pinpointing potential bottlenecks, and gauging system reliability under duress.
+
+Test Results
+
+WAF-Enabled Server: The server fortified with a WAF unveiled a stark reality — a substantial chunk of incoming requests met with blockade. The WAF, with its discerning eye, likely perceived certain request patterns as anomalies, thus halting them in their tracks. Consequently, our application's throughput dwindled, impairing user experience.
+![Photo](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-15-performance-testing\correct.png)
+Server Without WAF: In contrast, the server devoid of WAF restrictions welcomed all incoming requests with open arms. However, as the load soared with 1000 concurrent users, the server buckled under pressure, succumbing to a crippling crash. This unfortunate incident underscores the server's inability to cope with the heightened demand efficiently.
+![Photo](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-15-performance-testing\failed.png)
+
 
 ## Conclusion
 In the world of software development, performance testing is like the backbone, ensuring applications stand strong in terms of reliability, scalability, and efficiency. While aiming for perfection might seem like a daunting task, the quirks and hiccups in the process remind us of the complex nature of modern software and the ever-changing expectations of users.
 
 The takeaway from the FOSDEM 2024 lecture was clear: even though performance testing isn't flawless, it's incredibly valuable. It's like having a safety net, catching issues early on in the development cycle. By embracing these imperfections, developers pave the way for continuous improvement, making their applications more robust and effective in the long run.
-  
+
+Our study shows how important the way servers are set up is, especially if they have a Web Application Firewall (WAF). The server with the WAF struggled with blocking requests, while the one without it had trouble handling too many users. It's really important to find a good balance between keeping the website safe and making sure it works well. By fixing the problems we found and making improvements, the webservers can become faster, handle more users, and be more secure. 
