@@ -89,7 +89,7 @@ The configuration options provided by the `HTTPProtocolBuilder` enable precise c
 
 By customizing these settings within the httpProtocolBuilder, we can create test scenarios that closely resemble the behavior of real users interacting with our application or API.
 
-![httpProtocol.png](..%2Fimg%2F2024-02-23-performance-testing%2FhttpProtocol.png)
+<img alt="architecture" src="{{ '/img/2024-02-23-performance-testing/httpProtocol.png' | prepend: site.baseurl }}"  style="margin:0px auto; max-width: 900px;">
 
 #### The ScenarioBuilder
 In Gatling, the ScenarioBuilder crucially crafts realistic user interactions with the web application under test. It acts as the blueprint for defining various user journeys or workflows, detailing the sequence of HTTP requests to make and the order they should follow.
@@ -101,7 +101,7 @@ A `ScenarioBuilder` typically includes the following key elements:
 
 The ScenarioBuilder enables the creation of diverse and intricate scenarios that mirror the complexity of user interactions in production environments. Accurately replicating user behavior allows for assessing application performance under different usage scenarios and identifying any performance bottlenecks or issues.
 
-![scenario.png](..%2Fimg%2F2024-02-23-performance-testing%2Fscenario.png)
+<img alt="architecture" src="{{ '/img/2024-02-23-performance-testing/scenario.png' | prepend: site.baseurl }}"  style="margin:0px auto; max-width: 750px;">
 
 #### The Setup
 This method in Gatling lets you set up the test scenarios and configure the simulation before executing it. It accepts one or more scenarios and executes them. A scenario consists of 2 parts:
@@ -110,21 +110,24 @@ This method in Gatling lets you set up the test scenarios and configure the simu
 
 **rampUsers(100).during(100)**: This part of the setup specifies the injection pattern for users. This example indicates that the number of virtual users will gradually increase from 0 to 100 for 100 seconds. In simpler terms, with each passing second, Gatling will introduce an additional virtual user into the scenario until reaching a total of 100 concurrent users. This gradual ramp-up helps simulate realistic user load patterns and allows us to observe how the system performs under increasing stress levels.
 
-![setup.png](..%2Fimg%2F2024-02-23-performance-testing%2Fsetup.png)
+<img alt="architecture" src="{{ '/img/2024-02-23-performance-testing/setup.png' | prepend: site.baseurl }}"  style="margin:0px auto; max-width: 750px; height: 45px;">
 
 #### Results
 Following the completion of Gatling tests, a comprehensive report is generated, providing valuable insights into the performance of the tested application. Here are some key observations typically found in the report:
 
 **Response Times**: The report includes data on various metrics related to response times, such as average, minimum, maximum, and 95th percentile response times. These metrics indicate how quickly the application responds to different types of requests. Lower response times are generally preferable as they signify faster application responsiveness.
-![response.png](..%2Fimg%2F2024-02-23-performance-testing%2Fresponse.png)
+
+<img alt="architecture" src="{{ '/img/2024-02-23-performance-testing/response.png' | prepend: site.baseurl }}"  style="margin:0px auto; max-width: 750px;">
 
 **Errors**: The report documents information regarding any errors encountered during the test. These errors may include server errors, timeouts, or incorrect responses. Identifying and addressing these errors is crucial for improving application reliability and user experience.
 
-![fouten.png](..%2Fimg%2F2024-02-23-performance-testing%2Ffouten.png)
+<img alt="architecture" src="{{ '/img/2024-02-23-performance-testing/fouten.png' | prepend: site.baseurl }}"  style="margin:0px auto; max-width: 850px;">
 
 Based on the results, we infer that the tested lambda function and database can handle requests from 100 concurrent users. However, we note that the average response time for these requests is around 1200 ms. Although the system functions, this response time is relatively long, indicating potential for optimization to improve overall system performance.
 
 ## Conclusion
 In software development, performance testing is the backbone, ensuring applications stand firm regarding reliability, scalability, and efficiency. While the pursuit of perfection may seem daunting, the quirks and challenges in the process remind us of the complex nature of modern software and users' evolving expectations.
+
 This analysis highlights the critical importance of performance testing. Observers noted that, although the application could handle the requests, processing them took a long time. This underscores the significance of optimizing performance. Addressing these issues and implementing necessary improvements can enhance application efficiency, scalability, and security, ultimately delivering a superior user experience.
+
 The key takeaway from the FOSDEM 2024 lecture is crystal clear: although performance testing isn't flawless, its value is immeasurable. It acts as a safety net, capturing issues early in the development cycle. By embracing these imperfections, developers pave the path for continuous improvement, making their applications more resilient and effective in the long run.
