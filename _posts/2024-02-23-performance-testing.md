@@ -119,7 +119,7 @@ Following the completion of Gatling tests, a comprehensive report is generated, 
 ![response.png](..%2Fimg%2F2024-02-23-performance-testing%2Fresponse.png)
 
 **Errors**: Information regarding any errors encountered during the test is documented in the report. These errors may include server errors, timeouts, or incorrect responses. Identifying and addressing these errors is crucial for improving application reliability and user experience.
-![response.png](..%2Fimg%2F2024-02-23-performance-testing%2Fresponse.png)
+![fouten.png](..%2Fimg%2F2024-02-23-performance-testing%2Ffouten.png)
 
 From the results obtained, we can infer that the tested lambda function and database are capable of handling requests from 100 concurrent users. However, it is noted that the average response time for such requests is approximately 1200 ms. While functional, this response time may be considered relatively long and suggests room for optimization to enhance overall system performance.
 ## Conclusion
