@@ -16,7 +16,7 @@ comments: true
 ## Introduction
 Attending FOSDEM 2024 was an eye-opening experience, especially the lecture on performance testing, which underscored its vital role in software development.
 
-It's incredible how something seemingly technical can have such a profound impact on the reliability, speed, and scalability of applications. In this article, we'll explore the critical role of performance testing in software development. We'll discuss its importance in identifying bottlenecks, enhancing user experience, and why it's essential for businesses. Additionally, we'll address the challenges of performance testing and introduce Debezium as a tool for database performance monitoring. Let's dive in!
+It's incredible how something seemingly technical can have such a profound impact on the reliability, speed, and scalability of applications. In this article, we'll explore the critical role of performance testing in software development. We'll discuss its importance in identifying bottlenecks, enhancing user experience, and why it's essential for businesses. Additionally, we'll address the challenges of performance testing and introduce Gatling as a tool for database performance monitoring. Let's dive in!
 
 ## Why Performance Testing Matters
 Performance testing serves as a crucial element in guaranteeing that applications not only meet but surpass the expectations of both users and businesses. It transcends basic functionality testing, delving deeply into the nuances of how an application operates under diverse conditions and workloads.
@@ -69,23 +69,49 @@ With the adoption of DevOps practices, automation and integration are essential 
 ## Performance testing with Gatling
 Gatling is a powerful open-source tool designed for performance testing, renowned for its efficiency and flexibility. It allows developers to simulate real-world scenarios and assess the performance of their applications under various load conditions. Gatling uses a scenario-based approach, where users define test scenarios using a simple yet expressive DSL (Domain-Specific Language). These scenarios can simulate user interactions, such as browsing web pages, submitting forms, or making API calls.
 
-### Exploring WAF Impact Through Load Testing
-In a recent endeavor, we orchestrated a load test on two web servers, each with distinct configurations regarding Web Application Firewall (WAF). One server boasted the protective layer of a WAF, while the other operated without such fortification. Our objective? To decipher the repercussions of integrating a WAF within our infrastructure. Harnessing Gatling's prowess, we simulated 1000 concurrent users engaging with our web servers. This load testing aimed at gauging each server's prowess in managing simultaneous requests, pinpointing potential bottlenecks, and gauging system reliability under duress.
+## Gatling
+During our devcase, we came into contact with Gatling for the first time. The task was to build an application that could retrieve data from a smart electricity meter and translate it into something understandable for people.
 
-### Test Results
-WAF-Enabled Server: The server fortified with a WAF unveiled a stark reality — a substantial chunk of incoming requests met with blockade. The WAF, with its discerning eye, likely perceived certain request patterns as anomalies, thus halting them in their tracks. Consequently, our application's throughput dwindled, impairing user experience.
+So, data had to be stored and processed. For this, we used a lambda to convert the raw data and store it in a Timestream database.
 
-![correct.png](..%2Fimg%2F2024-02-23-performance-testing%2Fcorrect.png)
+To avoid the application crashing when more than 5 users simultaneously send the data from their meter, it was important to perform performance testing. It was important to know approximately how many simultaneous users the system could handle before it failed. For this, we used Gatling.
 
+## Structure of Gatling Code
+The Gatling code is structured as follows:
 
-Server Without WAF: In contrast, the server devoid of WAF restrictions welcomed all incoming requests with open arms. However, as the load soared with 1000 concurrent users, the server buckled under pressure, succumbing to a crippling crash. This unfortunate incident underscores the server's inability to cope with the heightened demand efficiently.
+The httpProtocolBuilder
+The httpProtocolBuilder creates an HTTPProtocolBuilder object, which is used to define the configuration of the HTTP protocol.
 
-![failed.png](..%2Fimg%2F2024-02-23-performance-testing%2Ffailed.png)
+![httpProtocol.png](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-23-performance-testing\httpProtocol.png)
+
+The ScenarioBuilder
+The scenario builder defines a scenario that describes interactions with the web application. A scenario can consist of one or more HTTP requests you want to test, as well as the order in which they should be executed.
+
+![scenario.png](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-23-performance-testing\scenario.png)
+
+The Setup
+This is a method in Gatling that allows you to set up the test scenarios and configure the simulation before it is executed. It accepts one or more scenarios and executes them. This consists of 2 parts:
+
+scn.injectOpen(...): This part of the code configures the injection of user behavior into the scenario scn. In this case, user behavior is injected according to a certain pattern.
+
+rampUsers(100).during(100): This specifies the injection pattern for users. It means that the number of users will gradually increase from 0 to 100 over a period of 100 seconds. In other words, every second, the number of concurrent users will increase by an average of 1 until reaching 100.
+
+![setup.png](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-23-performance-testing\setup.png)
+
+## Results
+After Gatling has run its tests, a comprehensive report is generated. From this, you can observe several interesting things. Here are a few examples:
+
+Response Times: The report will contain data on the average, minimum, maximum, and 95th percentile response times. These measurements show how quickly the application responds to different types of requests. A lower response time is generally desirable as it indicates a faster application response.
+
+![response.png](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-23-performance-testing\response.png)
+
+Errors: The report may contain information about any errors that occurred during the test, such as server errors, timeouts, or incorrect responses. This information can indicate where the application is lacking and which parts of the application may need improvement.
+
+![response.png](![response.png](C:\Users\ViVS\Documents\JWorks-blog\img\2024-02-23-performance-testing\response.png))
+
+From these results, we can deduce that the lambda and the database are capable of handling the requests from 100 concurrent users, but as seen in the results, it takes an average of 1200 ms to handle such a request. This is still relatively long and could be further optimized.
 
 ## Conclusion
 In the realm of software development, performance testing serves as the backbone, ensuring applications stand strong in terms of reliability, scalability, and efficiency. While the pursuit of perfection may seem daunting, the quirks and challenges inherent in the process remind us of the complex nature of modern software and the evolving expectations of users.
-
-This analysis highlights the critical importance of server configuration, particularly regarding Web Application Firewalls (WAFs). It was observed that while a server fortified with a WAF encountered challenges in blocking certain requests, the server without such defenses struggled to handle a surge in user load. This underscores the significance of finding a delicate balance between ensuring website security and optimizing performance. Addressing these identified issues and implementing necessary improvements can enhance server efficiency, scalability, and security, ultimately delivering a superior user experience.
-
+This analysis highlights the critical importance of performance testing. It was observed that while the application could handle the requests, it still took a long time to process them. This underscores the significance of optimizing performance. Addressing these identified issues and implementing necessary improvements can enhance application efficiency, scalability, and security, ultimately delivering a superior user experience.
 The key takeaway from the FOSDEM 2024 lecture is crystal clear: although performance testing isn't flawless, its value is immeasurable. It acts as a safety net, capturing issues early in the development cycle. By embracing these imperfections, developers pave the path for continuous improvement, making their applications more resilient and effective in the long run.
-
