@@ -2,7 +2,7 @@
 layout: post
 authors: [oumaima-zerouali, viktor_van_steenweghen]
 title: 'The Imperfect Yet Crucial Role of Performance Testing'
-image: /img/2024-02-15-performance-testing/banner.png
+image: /img/2024-02-23-performance-testing/banner.png
 tags: [ Testing, Development, performance testing]
 category: Testing
 comments: true
