@@ -1214,3 +1214,13 @@ yannick-horrix:
   github: yhorrix-ordina
   email: yannick.horrix@ordina.be
   bio: Yannick is a Cloud Engineer passionate about everything AWS, Kubernetes and Automation.
+viktor_van_steenweghen:
+  first_name: Viktor
+  last_name: Van Steenweghen
+  permalink: /author/viktor-van-steenweghen/
+  avatar: viktor-van-steenweghen.jpg
+  title: Junior Java Developer
+  linkedin: viktorvansteenweghen
+  github: Vikteur
+  email: viktor.vansteenweghen@ordina.be
+  bio: Viktor is a Java Consultant with an interest in both back-end and front-end.
