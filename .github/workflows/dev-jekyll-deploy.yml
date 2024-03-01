@@ -43,7 +43,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@f4c6bf6752984b3a29fcc135a5e70eb792c40c6b # v1.8.0
+      - uses: actions/create-github-app-token@f2acddfb5195534d487896a656232b016a682f3c # v1.9.0
         id: repository-token
         with:
           app-id: ${{ vars.ORDINA_GROUP_BOT_APP_ID }}
