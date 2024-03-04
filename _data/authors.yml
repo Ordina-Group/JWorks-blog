@@ -1224,3 +1224,14 @@ viktor_van_steenweghen:
   github: Vikteur
   email: viktor.vansteenweghen@ordina.be
   bio: Viktor is a Java Consultant with an interest in both back-end and front-end.
+
+tim_vandendriessche:
+  first_name: Tim
+  last_name: Vandendriessche
+  permalink: /author/tim-vandendriessche/
+  avatar: tim-vandendriessche.jpg
+  title: Junior Java Developer
+  linkedin: vandendriessche-tim
+  github: TimVandendriesscheOrdina
+  email: tim.vandendriessche@ordina.be
+  bio: Tim is a Java Consultant with a broad interest.
