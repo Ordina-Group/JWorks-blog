@@ -12,7 +12,9 @@ comments: true
 
 - [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
+- [Architecture](#architecture)
 - [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
+- [AI Benchmarking](#ai-benchmarking)
 - [Conclusion (DRAFT - Jonathan)](#conclusion-draft---jonathan)
 
 # Introduction
@@ -22,6 +24,8 @@ To align with the new trend of generative AI models we created What'sCooking whi
 The purpose is to test the usage of AI that generates new human-readable content rather than finding or classifying existing content. This falls under the category of LLMs. More explanations about this will be provided in upcoming sections. Furthermore, the purpose of Prompt Engineering and how it can make a big difference when tweaking communication with a large chat model will be discussed.
 
 The application doesn't stop at recommendations; it dynamically generates images of suggested recipes. Users can also personalize their experience on the Preferences page, specifying dietary restrictions and culinary preferences. Powered by LLM, generative AI, and AWS for deployment, the app is at the forefront of innovation. Continuous updates ensure optimization of pricing, performance benchmarking, and accommodation of diverse user requests.
+
+# Architecture
 
 # Leveraging AI (DRAFT - Jonathan)
 
@@ -47,6 +51,8 @@ While the prompts are stateless, meaning each prompt is self-contained and does 
 To ensure proper formatting of the AI-model's replies we implemented a prompting technique called "Few-Shot Prompting".
 Simply put, with Few-Shot Prompting you provide the AI model an example question & answer out of which it can establish a pattern.
 For this approach we engineered a template to serve as a basis for our prompt, in which we inject the dynamic information before sending it to the AI.
+
+# AI Benchmarking
 
 # Conclusion (DRAFT - Jonathan)
 
