@@ -12,7 +12,8 @@ comments: true
 
 - [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
-- [Application Architecture](#application-architecture)
+- [Our Project (DRAFT - Febe)](#our-project-draft---febe)
+- [Application Architecture (DRAFT - Febe)](#application-architecture-draft---febe)
 - [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
 - [AI Benchmarking](#ai-benchmarking)
 - [Conclusion (DRAFT - Jonathan)](#conclusion-draft---jonathan)
@@ -25,7 +26,21 @@ The purpose is to test the usage of AI that generates new human-readable content
 
 The application doesn't stop at recommendations; it dynamically generates images of suggested recipes. Users can also personalize their experience on the Preferences page, specifying dietary restrictions and culinary preferences. Powered by LLM, generative AI, and AWS for deployment, the app is at the forefront of innovation. Continuous updates ensure optimization of pricing, performance benchmarking, and accommodation of diverse user requests.
 
-# Application Architecture
+# Our Project (DRAFT - Febe)
+
+For our internship project, we developed "What's Cooking with ChatGPT." This entails a Chrome extension designed to suggest AI-generated recipes based on the items currently residing in the user's online shopping basket. To achieve this, we crafted scrapers specifically tailored to extract data from popular Belgian webshops such as Colruyt, Delhaize, Albert Heijn, and Aldi.
+
+Within our Java backend, we seamlessly integrated Spring AI, facilitating the implementation of various AI models including OpenAI's ChatGPT and Amazon's Titan. For the frontend, we utilized React and Next.js to craft the interface of our extension.
+
+Initially, our project featured a straightforward interface solely displaying the generated recipe. Subsequently, we enhanced this interface to offer users the ability to personalize their experience by selecting preferences such as dietary or culinary restrictions. These preferences serve to tailor the recipe recommendations to the individual user. Additionally, we incorporated functionality enabling the generation of a reference photo depicting the suggested recipe. Furthermore, users can export recipes to a text file for future reference and use.
+
+# Application Architecture (DRAFT - Febe)
+
+In our project, we implemented CI/CD to streamline the deployment process of our backend. This was achieved by leveraging various tools offered by different providers such as GitHub and Amazon Web Services (AWS). Initially, we began by writing workflow files to automate the execution of tests with each push to the development branch on GitHub. Over time, this progressed into developing workflow files aimed at building and deploying our backend onto App Runner, thereby enabling seamless access to our backend without the necessity of local execution.
+
+Within our GitHub workflow files, we designed jobs dedicated to constructing Docker images using Maven, facilitating the subsequent pushing of the latest backend image to Amazon Elastic Container Registry (ECR). Following the image push to ECR, we employed Terraform to deploy this image onto App Runner. To streamline the orchestration of these jobs, which were authored in separate files for organizational clarity, we utilized a main workflow file to dictate the sequence in which the jobs were to be executed.
+
+In our pursuit of enhancing backend security on App Runner, we opted to integrate an API Gateway. This gateway serves as a protective layer, mandating that all frontend requests transit through it and ensuring access to the backend only if the appropriate key is present in the request headers.
 
 # Leveraging AI (DRAFT - Jonathan)
 
@@ -57,6 +72,8 @@ Simply put, with Few-Shot Prompting you provide the AI model an example question
 For this approach we engineered a template to serve as a basis for our prompt, in which we inject the user supplied data before sending it to the AI.
 
 # AI Benchmarking
+
+<!-- WIP -->
 
 # Conclusion (DRAFT - Jonathan)
 
