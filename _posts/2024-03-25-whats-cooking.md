@@ -1,6 +1,6 @@
 ---
 layout: post
-authors: [ayoub-ait-cheikhahmed, jonathan, febe]
+authors: [ayoub_ait_cheikh_ahmed, jonathan_moermans, febe_cap]
 title: "Whats Cooking AI"
 image: /img/2024-03-25-whatscooking/whatscooking-banner.jpg
 tags: [AI, aws, internship, springAI, terraform, docker]
@@ -12,6 +12,7 @@ comments: true
 
 - [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
+- [Used Technologies (DRAFT)](#used-technologies)
 - [Architecture](#architecture)
 - [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
 - [AI Benchmarking](#ai-benchmarking)
@@ -19,11 +20,67 @@ comments: true
 
 # Introduction
 
-To align with the new trend of generative AI models we created What'sCooking which is an application where users can easily extract their shopping basket items with a click. These items undergo analysis by advanced AI, which then suggests personalized recipes based on the user's inventory. The AI filters the ingredients to ensure the suggestions align with the user's preferences.
+To align with the new trend of generative AI models that are gaining emergent capabilities,we created What'sCooking which is an application where users can easily extract their shopping basket items with a click.
 
-The purpose is to test the usage of AI that generates new human-readable content rather than finding or classifying existing content. This falls under the category of LLMs. More explanations about this will be provided in upcoming sections. Furthermore, the purpose of Prompt Engineering and how it can make a big difference when tweaking communication with a large chat model will be discussed.
+These items undergo analysis by advanced AI, which then suggests personalized recipes based on the user's inventory.
 
-The application doesn't stop at recommendations; it dynamically generates images of suggested recipes. Users can also personalize their experience on the Preferences page, specifying dietary restrictions and culinary preferences. Powered by LLM, generative AI, and AWS for deployment, the app is at the forefront of innovation. Continuous updates ensure optimization of pricing, performance benchmarking, and accommodation of diverse user requests.
+The AI filters the ingredients to ensure the suggestions align with the user's preferences.
+
+The purpose is to test the usage of AI that generates new human-readable content rather than finding or classifying existing content, this falls under the category of LLMs.
+
+More explanations about this will be provided in upcoming sections.
+
+Furthermore, the purpose of Prompt Engineering and how it can make a big difference when tweaking communication with a large chat model will be discussed.
+
+The application doesn't stop at recommendations; it dynamically generates images of suggested recipes.
+
+Users can also personalize their experience on the Preferences page, specifying dietary restrictions and culinary preferences.
+
+Powered by LLM, generative AI, and AWS for deployment, the app is at the forefront of innovation. Continuous updates ensure optimization of pricing, performance benchmarking, and accommodation of diverse user requests.
+
+# Used Technologies
+
+### Frontend
+
+- **Next.js:** A React framework that enables functionalities such as server-side rendering and generating static websites, enhancing SEO, performance, and user experience.
+
+- **Chakra UI:** A simple, modular and accessible component library that provides the building blocks to build React applications with speed and ease.
+
+### Backend
+
+- **Spring Boot:** Simplifies the development of new Spring applications through convention over configuration, offering a wide range of functionalities for modern web services.
+
+- **Spring AI:** While "Spring AI" isn't directly recognized, it likely refers to integrating AI capabilities within Spring applications, leveraging Spring's ecosystem for scalable AI solutions.
+
+- **LLM (Large Language Models):** Offers advanced capabilities in natural language processing, understanding, generation, and translation, enabling sophisticated interaction and content creation.
+
+### AWS Services
+
+- **ECR (Elastic Container Registry):** Provides a Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images.
+
+- **ECS (Elastic Container Service):** A fully managed container orchestration service that makes it easy to run, stop, and manage containers on a cluster.
+
+- **App Runner:** Provides a managed service for developers to quickly deploy containerized web applications and APIs, without dealing with infrastructure management.
+
+- **Secret Manager:** Helps to protect access to applications, services, and IT resources without the upfront cost and complexity of managing a full infrastructure.
+
+- **DynamoDB:** A fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.
+
+- **API Gateway:** Offers a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
+
+- **API Gateway API Key:** Utilized for controlling and monitoring API usage and access, enhancing security and usage metrics.
+
+### CI/CD Pipeline
+
+- **GitHub Workflows:** Automates your software development workflows.
+
+- **Terraform:** An infrastructure as code software tool that allows you to build, change, and version infrastructure safely and efficiently.
+
+### AI Models
+
+- **OpenAI Models:** Provides advanced AI models like GPT (Generative Pre-trained Transformer) for natural language understanding, generation, and conversational AI capabilities.
+
+- **AWS AI Model Bedrock:** While not specifically recognized as "AWS AI Model Bedrock", AWS provides a comprehensive suite of AI services and tools like Amazon SageMaker for building, training, and deploying machine learning models at scale.
 
 # Architecture
 
@@ -63,3 +120,13 @@ This consistency ensures seamless integration and reliable functionality within 
 
 Finally, it's worth noting that during our project development we've encountered variations in the comprehensiveness of AI models.
 Some models excel in certain tasks while lacking in others, highlighting the importance of evaluation and selection based on the application requirements.
+
+# Our experience
+
+Our internship journey culminated in the successful execution of our assignment.
+
+Along the way, we encountered numerous challenges related to the project's implementation.
+
+Moreover, it was genuinely an enriching learning experience. Engaging in a process filled with obstacles, and striving to overcome them, was profoundly educational.
+
+This was made possible thanks to our experienced mentors and collegues, who provided invaluable assistance and knowledge throughout our journey.
