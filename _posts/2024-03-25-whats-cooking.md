@@ -116,7 +116,32 @@ For this approach we engineered a template to serve as a basis for our prompt, i
 
 # AI Benchmarking
 
-<!-- WIP -->
+# AI Benchmarking
+
+An aspect that particularly intrigued us was the opportunity to benchmark the Generative AI models used in our project. This benchmarking could be achieved through several approaches:
+
+- **User Ratings Comparison:** Analyzing the ratings, ranging from 1 to 5, that users assign to the responses provided by the AI models. This direct feedback serves as a valuable metric for assessing user satisfaction and the practical utility of the models' outputs.
+
+- **Evaluating Our Experiences Against the Model's Responses:** This involves a more subjective, yet insightful, examination based on our interactions with the model:
+
+  - **Understanding of the Prompt:** Assessing whether the model grasps the essence of the given prompt accurately.
+
+  - **Responsiveness to Prompt Modifications:** Determining if the model effectively incorporates changes to the prompt, adapting its responses accordingly.
+
+  - **Model "Laziness":** This term refers to the model's potential shortcomings in:
+
+    - Not adhering strictly to the prompt's requirements.
+    - Failing to retain context throughout the interaction.
+    - Not remembering previous responses or prompts, which is crucial for coherent and contextual conversation.
+
+  - **Overall Implementation Experience:** Reflecting on the entire process, including how well-documented and user-friendly the model and its implementation framework were. This encompasses ease of integration, clarity of documentation, and overall developer experience.
+
+These criteria collectively contribute to a comprehensive understanding of the AI models' capabilities, user experience, and developer experience. By accuratly comparing these factors, we aim to give our humble opinion about the strengths and limitations of the Generative AI models within the scope of our project, paving the way for targeted improvements and informed choices in future endeavors.
+
+**Benchmarking material:**
+The following link provides access to a spreadsheet file detailing our testing process. The first tab includes various columns with the foundational test data. Subsequent tabs are dedicated to each AI model (OpenAI, Titan, Llama2, Coher), containing requests, responses, and notes. The final tab features a confusion matrix that illustrates the performance of each AI model.
+
+- link to Excel file
 
 # Conclusion (DRAFT - Jonathan)
 
