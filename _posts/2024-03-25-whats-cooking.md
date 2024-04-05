@@ -12,7 +12,7 @@ comments: true
 
 In this article, we introduce "What's Cooking," a Chrome extension that helps you make recipes using AI. Just by clicking, you can see what recipes you can make with the stuff you have in your shopping basket.
 
-We use fancy AI to figure out what recipes you might like based on what's in your shopping basket and some preferences like diet and duration of the recipe. In addition to just finding recipes, our AI actually creates new ones!
+We use fancy AI to figure out what recipes you might like based on your preferences and basket. In addition to just finding recipes, our AI actually creates new ones!
 
 We'll talk about how we built the extension, using stuff like Next.js for the part you see, Spring Boot for the behind-the-scenes stuff, and Amazon's cloud services to make sure everything runs smoothly. Plus, we'll explain how we set up everything step by step.
 
@@ -116,32 +116,33 @@ This gateway serves as a protective layer, mandating that all frontend requests 
 
 # Leveraging AI (DRAFT - Jonathan)
 
-In our application, the backend receives data delivered by the Chrome plugin via HTTP request.
-It performs various operations on this data, most of them involving AI.
-We can categorise these AI-operations in to:
+In our setup, the backend gets data from the Chrome plugin via an HTTP request. It then dives into various tasks, many of which involve AI.
+
+We can split these AI tasks into two main categories:
 
 - Data cleaning
 - Content generation
 
-The first AI-operation is cleaning the data of undesired elements.
-In our case this means filtering out the inedible ingredients from a collection of potentially edible ingredients. Without AI, handling this problem would require accessing a large dataset and executing multiple queries. Whereas in our application this entire process was replaced by a single prompt and handling of the response.
-It even appears the AI has perfect judgement on whether something is safe for human consumption, and it is more stubborn than you would expect when you try to convince it otherwise.
+First up, there's data cleaning. Here, the AI sorts through the data, getting rid of any bits we don't want. In our case, that means sifting out the not-so-tasty ingredients from a bunch that could be edible. 
 
-With this potentially altered list of ingredients we can proceed to our second AI-operation, which is generating content in the shape of a recipe.
-The AI model should take into account all the recipe requirements, and format its replies in a consistent & specific way.
-Otherwise we run the risk of the AI-model's responses not being able to be reliably parsed into objects in a Java environment.
+Without AI, handling this would mean digging into a huge dataset and running loads of searches. But in our app, it's as easy as a single prompt and waiting for the AI's response. It's almost like the AI can tell at a glance if something's safe to eat—talk about stubborn!
 
-There are two main approaches to ensure consistency:
+Once we've got our ingredients list all sorted, it's time for the second AI task: cooking up some content in the form of recipes.
 
-- Custom AI Model: Develop a tailored AI model, requiring more initial investment but offering precise alignment with your needs.
+The AI needs to consider all the recipe requirements and make sure its responses are consistent and clear. 
+ 
+Otherwise, it's like trying to follow a recipe without knowing if you need a pinch or a dash—it just doesn't work!
 
-- Standard AI Model with Elaborate Prompts: Utilize a pre-existing AI model, supplementing it with detailed prompts to optimise its performance out-of-the-box.
+Now, there are a couple of ways to keep things consistent:
 
-While the prompts are stateless, meaning each prompt is self-contained and does not rely on previous interactions, we must provide all necessary instructions and data for each prompt. Despite the greater token efficiency of the first approach on a prompt-to-prompt basis, we opted for the second approach. This allows us to conveniently compare the performance of AI models by supplying them with the same prompt, facilitating our benchmarking and study.
+- Custom AI Model: You make your own AI model from scratch. It takes more time and effort, but it fits your needs like a glove.
+- Standard AI Model with Detailed Prompts: You use an existing AI model but give it super detailed prompts to guide its performance. 
 
-To ensure proper formatting of the AI-model's replies we used a prompting technique called "Few-Shot Prompting".
-Simply put, with Few-Shot Prompting you provide the AI model an example question & answer out of which it can establish a pattern.
-For this approach we engineered a template to serve as a basis for our prompt, in which we inject the user supplied data before sending it to the AI.
+We went with the second option. Even though the first one might be more efficient in terms of prompts, the second one lets us compare AI models easily by giving them all the same instructions. It's like a taste test for AI!
+
+And to make sure the AI's responses are properly formatted, we used a technique called "Few-Shot Prompting.".
+
+Basically, you give the AI a question and answer to learn from, and it picks up on the pattern. For this, we set up a template to base our prompt on, plugging in the user's data before sending it off to the AI.
 
 # AI Benchmarking
 
@@ -166,13 +167,13 @@ An aspect that particularly intrigued us was the opportunity to benchmark the Ge
 These criteria collectively contribute to a comprehensive understanding of the AI models' capabilities, user experience, and developer experience. By accuratly comparing these factors, we aim to give our humble opinion about the strengths and limitations of the Generative AI models within the scope of our project, paving the way for targeted improvements and informed choices in future endeavors.
 
 **Benchmarking material:**
-The following link provides access to a spreadsheet file detailing our testing process. The first tab includes various columns with the foundational test data. Subsequent tabs are dedicated to each AI model (OpenAI, Titan, Llama2, Coher), containing requests, responses, and notes. The final tab features a confusion matrix that illustrates the performance of each AI model.
+The following link provides access to a spreadsheet file detailing our testing process. The first tab includes various columns with the foundational test data. Subsequent tabs are dedicated to each AI model (OpenAI, Titan, Llama2, Cohere), containing requests, responses, and notes. The final tab features a confusion matrix that illustrates the performance of each AI model.
 
 - link to Excel file
 
 ## Benchmarking comparison between models
 
-| Feature | OpenAI ChatGPT | Bedrock Titan | Cohere Command | Meta Llama2 |
+|  | OpenAI ChatGPT | Bedrock Titan | Cohere Command | Meta Llama2 |
 |---|---|---|---|---|
 | Strengths | (Add Strengths here) | (Add Strengths here) | * Formatted the anwser without trouble | * Does understand which ingredients are edible and which aren't |
 | Weaknesses | (Add Weaknesses here) | (Add Weaknesses here) | * Can't understand Dutch * Isn't good in understanding what is edible and what isn't * Gives basic recipes which often do not take the requested diets into account | * Does not understand Dutch very well * Gives basic recipes when it can be creative * Often it doesn't give recipes which take the requested diet into account |
@@ -184,52 +185,45 @@ The following link provides access to a spreadsheet file detailing our testing p
 
 ## Benchmarking Cohere Command
 
-When benchmarking Cohere Command, we realized it excelled in following instructions.
+When we tested out Cohere Command, it showed it was pretty good at following instructions, especially when it had to make a fancy JSON response. It did better than the most models!
 
-We requested a JSON response for direct object creation, a task it handled more smoothly than other models.
+But when it came to making recipes, Cohere Command had some trouble. It couldn't handle special diets very well, and its cooking ideas weren't very exciting. It was like watching a new chef trying to do too much at once!
 
-However, we also discovered its limitations in generating recipes, often failing to align with required dietary restrictions and preferences.
+And when it tried to understand Dutch ingredients, it got a bit confused. It couldn't tell which ones were edible and which ones weren't.
 
-It also wasn't the best in generating recipes in a creative way and adding matching ingredients to the recipe on its own.
+Still, even with these problems, we didn't have too much trouble getting Cohere Command set up. With just a few changes, we made it work.
 
-The primary issue arose when processing Dutch ingredients; it evidently lacked familiarity with Dutch, leading to difficulty in discerning edibility.
-
-This language barrier was consistent across other models we tested.
-
-The implementation of Cohere Command proved simpler compared to alternative models. 
-
-We could readily adapt prompts from the OpenAI model with minimal adjustments.
-
-While it didn't match the performance of the OpenAI model, as anticipated, it still surpassed our initial expectations.
+While it might not have been as amazing as the OpenAI model, Cohere Command still impressed us!
 
 ## Benchmarking Meta Llama2
 
-When benchmarking the Meta model called Llama2, we saw that it was good in filtering the edible and not edible ingredients when the ingredients were given in English.
+When we put the Meta model Llama2 to the test, we found it pretty skilled at sorting out which ingredients were good to eat and which weren't, especially when they were in English.
 
-When the ingredients were given in Dutch, it did make some mistakes.
+But when we tried it with Dutch ingredients, it got a bit mixed up and made some mistakes.
 
-It also gave very basic ingredients when it was able to be creative and could add whatever ingredient to the recipe as desired.
+It also tended to stick to basic ingredients, even when it had the chance to get creative and add whatever it wanted to the recipe.
 
-Like other models, it didn't take dietary restrictions into account very well.
+Just like the other models, it didn't do a great job of considering special diets.
 
-The implementation of Llama2 was harder compared to the other models because I had to rewrite the original prompt and make it easier and clearer because the original prompt was too complicated.
+Setting up Llama2 was a bit tougher compared to the other models because we had to rewrite the original instructions to make them simpler and clearer. The original instructions were just too complicated!
 
 # Conclusion (DRAFT - Jonathan)
 
-The things we've learned:
 
-- Introducing AI into our codebase has enabled us to streamline or fully replace traditional solutions, eliminating the need for additional assets like large datasets. With proper configuration, AI proves to be a potent tool for various operations on (user-supplied) data.
+Here's what we've discovered along the way:
 
-- Throughout project development, we encountered variations in the ability of AI models to comprehend large and extensive prompts. Some models excel in certain tasks while lacking in others, emphasizing the importance of evaluating and selecting models based on application requirements.
+- Bringing AI into our code has let us streamline or even replace old-school solutions, ditching the need for hefty datasets. With the right setup, AI is a real game-changer for handling all sorts of data, especially the stuff users throw our way.
 
-- Consistency is key when parsing string responses from AI into Java objects.
+- As we built our project, we noticed that different AI models handle big, complex prompts in different ways. Some shine in certain tasks but stumble in others. It's a reminder that picking the right model depends on what we need it to do.
+
+- When it comes to turning AI responses into Java objects, consistency is key. It's like trying to fit puzzle pieces together—if they're all different shapes and sizes, things just don't click.
 
 # Our experience
 
-Our internship journey culminated in the successful execution of our assignment.
+Our internship adventure wrapped up with us nailing our assignment.
 
-Along the way, we encountered numerous challenges related to the project's implementation.
+But let's be real—it wasn't all smooth sailing. We faced a bunch of challenges as we tackled the project.
 
-Moreover, it was genuinely an enriching learning experience. Engaging in a process filled with obstacles, and striving to overcome them, was profoundly educational.
+Still, it was a seriously rewarding journey. Battling through obstacles and coming out on top taught us a ton.
 
-This was made possible thanks to our experienced mentors and collegues, who provided invaluable assistance and knowledge throughout our journey.
+And none of it would've been possible without our awesome mentors and colleagues. Their guidance and wisdom were total game-changers every step of the way.
