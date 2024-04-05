@@ -8,56 +8,43 @@ category: AI
 comments: true
 ---
 
+# Introduction
+
+In this article, we introduce "What's Cooking," a Chrome extension that helps you make recipes using AI. Just by clicking, you can see what recipes you can make with the stuff you have in your shopping basket.
+
+We use fancy AI to figure out what recipes you might like based on what's in your shopping basket and some preferences like diet and duration of the recipe. In addition to just finding recipes, our AI actually creates new ones!
+
+We'll talk about how we built the extension, using stuff like Next.js for the part you see, Spring Boot for the behind-the-scenes stuff, and Amazon's cloud services to make sure everything runs smoothly. Plus, we'll explain how we set up everything step by step.
+
+We'll also dive into how we tested different AI models to see which one worked best. It was like a taste test for AI! And along the way, we'll share the ups and downs we faced while working on this project.
+
+So, join us as we explore the exciting world of AI in cooking, sharing our journey and discoveries along the way.
+
 # Table of contents
 
-- [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
-- [Used Technologies (DRAFT)](#used-technologies)
+- [Table of contents](#table-of-contents)
 - [Our Project (DRAFT - Febe)](#our-project-draft---febe)
+- [Used Technologies (DRAFT)](#used-technologies)
 - [Application Architecture (DRAFT - Febe)](#application-architecture-draft---febe)
 - [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
 - [AI Benchmarking](#ai-benchmarking)
 - [Conclusion (DRAFT - Jonathan)](#conclusion-draft---jonathan)
 
-# Introduction
-
-To align with the new trend of generative AI models that are gaining emergent capabilities,we created What'sCooking which is an application where users can easily extract their shopping basket items with a click.
-
-These items undergo analysis by advanced AI, which then suggests personalized recipes based on the user's inventory.
-
-The AI filters the ingredients to ensure the suggestions align with the user's preferences.
-
-The purpose is to test the usage of AI that generates new human-readable content rather than finding or classifying existing content, this falls under the category of LLMs.
-
-More explanations about this will be provided in upcoming sections.
-
-Furthermore, the purpose of Prompt Engineering and how it can make a big difference when tweaking communication with a large chat model will be discussed.
-
-The application doesn't stop at recommendations; it dynamically generates images of suggested recipes.
-
-Users can also personalize their experience on the Preferences page, specifying dietary restrictions and culinary preferences.
-
-Powered by LLM, generative AI, and AWS for deployment, the app is at the forefront of innovation. Continuous updates ensure optimization of pricing, performance benchmarking, and accommodation of diverse user requests.
 
 # Our Project (DRAFT - Febe)
 
-For our internship project, we developed "What's Cooking with ChatGPT."
+For our internship project, we dished out something delightful: "What's Cooking with ChatGPT."
 
-This entails a Chrome extension designed to suggest AI-generated recipes based on the items currently residing in the user's online shopping basket.
+Imagine a Chrome extension that serves up AI-crafted recipes based on your online shopping list.
 
-To achieve this, we crafted scrapers specifically tailored to extract data from popular Belgian webshops such as Colruyt, Delhaize, Albert Heijn, and Aldi.
+To cook up this magic, we crafted custom web scrapers to gather data from major Belgian online retailers like Colruyt, Delhaize, Albert Heijn, and Aldi.
 
-Within our Java backend, we seamlessly integrated Spring AI, facilitating the implementation of various AI models including OpenAI's ChatGPT and Amazon's Titan.
+In the backend (our Java setup), we seamlessly integrated Spring AI, opening the door to a variety of AI models, including heavy hitters like OpenAI's ChatGPT, Command by Cohere, Meta's LLama2 and Amazon's Titan.
 
-For the frontend, we utilized React and Next.js to craft the interface of our extension.
+On the frontend, we spruced up the user interface with React and Next.js. Initially simple, just spitting out recipes, but soon we added a pinch of customization, letting users fine-tune preferences like dietary restrictions and culinary whims.
 
-Initially, our project featured a straightforward interface solely displaying the generated recipe.
-
-Subsequently, we enhanced this interface to offer users the ability to personalize their experience by selecting preferences such as dietary or culinary restrictions.
-
-These preferences serve to tailor the recipe recommendations to the individual user.
-
-Additionally, we incorporated functionality enabling the generation of a reference photo depicting the suggested recipe. Furthermore, users can export recipes to a text file for future reference and use.
+But hold onto your chef's hat! We also added a nifty feature that conjures up a snapshot of what your dish might look like. And, of course, you can save those recipe gems for later in a convenient text file.
 
 # Used Technologies
 
@@ -101,7 +88,7 @@ Additionally, we incorporated functionality enabling the generation of a referen
 
 - **OpenAI Models:** Provides advanced AI models like GPT (Generative Pre-trained Transformer) for natural language understanding, generation, and conversational AI capabilities.
 
-- **AWS AI Model Bedrock Titan:** While not specifically recognized as "AWS AI Model Bedrock Titan", AWS provides a comprehensive suite of AI services and tools like Amazon SageMaker for building, training, and deploying machine learning models at scale.
+- **AWS AI Model Bedrock Titan:** Bedrock Titan AI is a suite of large language models offered by Amazon for building generative AI applications.
 
 - **Cohere Command:** Cohere Command is a powerful language model designed for enterprises, excelling at following instructions and completing complex tasks.
 
