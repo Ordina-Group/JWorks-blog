@@ -39,6 +39,26 @@ Users can also personalize their experience on the Preferences page, specifying 
 
 Powered by LLM, generative AI, and AWS for deployment, the app is at the forefront of innovation. Continuous updates ensure optimization of pricing, performance benchmarking, and accommodation of diverse user requests.
 
+# Our Project (DRAFT - Febe)
+
+For our internship project, we developed "What's Cooking with ChatGPT."
+
+This entails a Chrome extension designed to suggest AI-generated recipes based on the items currently residing in the user's online shopping basket.
+
+To achieve this, we crafted scrapers specifically tailored to extract data from popular Belgian webshops such as Colruyt, Delhaize, Albert Heijn, and Aldi.
+
+Within our Java backend, we seamlessly integrated Spring AI, facilitating the implementation of various AI models including OpenAI's ChatGPT and Amazon's Titan.
+
+For the frontend, we utilized React and Next.js to craft the interface of our extension.
+
+Initially, our project featured a straightforward interface solely displaying the generated recipe.
+
+Subsequently, we enhanced this interface to offer users the ability to personalize their experience by selecting preferences such as dietary or culinary restrictions.
+
+These preferences serve to tailor the recipe recommendations to the individual user.
+
+Additionally, we incorporated functionality enabling the generation of a reference photo depicting the suggested recipe. Furthermore, users can export recipes to a text file for future reference and use.
+
 # Used Technologies
 
 ### Frontend
@@ -51,7 +71,7 @@ Powered by LLM, generative AI, and AWS for deployment, the app is at the forefro
 
 - **Spring Boot:** Simplifies the development of new Spring applications through convention over configuration, offering a wide range of functionalities for modern web services.
 
-- **Spring AI:** While "Spring AI" isn't directly recognized, it likely refers to integrating AI capabilities within Spring applications, leveraging Spring's ecosystem for scalable AI solutions.
+- **Spring AI:** Spring AI is a framework for building AI applications in Java, inspired by Spring principles for ease of development.
 
 - **LLM (Large Language Models):** Offers advanced capabilities in natural language processing, understanding, generation, and translation, enabling sophisticated interaction and content creation.
 
@@ -81,9 +101,31 @@ Powered by LLM, generative AI, and AWS for deployment, the app is at the forefro
 
 - **OpenAI Models:** Provides advanced AI models like GPT (Generative Pre-trained Transformer) for natural language understanding, generation, and conversational AI capabilities.
 
-- **AWS AI Model Bedrock:** While not specifically recognized as "AWS AI Model Bedrock", AWS provides a comprehensive suite of AI services and tools like Amazon SageMaker for building, training, and deploying machine learning models at scale.
+- **AWS AI Model Bedrock Titan:** While not specifically recognized as "AWS AI Model Bedrock Titan", AWS provides a comprehensive suite of AI services and tools like Amazon SageMaker for building, training, and deploying machine learning models at scale.
 
-# Architecture
+- **Cohere Command:** Cohere Command is a powerful language model designed for enterprises, excelling at following instructions and completing complex tasks.
+
+- **Meta Llama2:** Meta Llama2 is a next-generation large language model known for its commercial-grade capabilities and open-source availability.
+
+# Application Architecture (DRAFT - Febe)
+
+In our project, we implemented CI/CD to streamline the deployment process of our backend.
+
+This was achieved by leveraging various tools offered by different providers such as GitHub and Amazon Web Services (AWS).
+
+Initially, we began by writing workflow files to automate the execution of tests with each push to the development branch on GitHub.
+
+Over time, this progressed into developing workflow files aimed at building and deploying our backend onto App Runner, thereby enabling seamless access to our backend without the necessity of local execution.
+
+Within our GitHub workflow files, we designed jobs dedicated to constructing Docker images using Maven, facilitating the subsequent pushing of the latest backend image to Amazon Elastic Container Registry (ECR).
+
+Following the image push to ECR, we employed Terraform to deploy this image onto App Runner.
+
+To streamline the orchestration of these jobs, which were authored in separate files for organizational clarity, we utilized a main workflow file to dictate the sequence in which the jobs were to be executed.
+
+In our pursuit of enhancing backend security on App Runner, we opted to integrate an API Gateway.
+
+This gateway serves as a protective layer, mandating that all frontend requests transit through it and ensuring access to the backend only if the appropriate key is present in the request headers.
 
 # Leveraging AI (DRAFT - Jonathan)
 
@@ -116,8 +158,6 @@ For this approach we engineered a template to serve as a basis for our prompt, i
 
 # AI Benchmarking
 
-# AI Benchmarking
-
 An aspect that particularly intrigued us was the opportunity to benchmark the Generative AI models used in our project. This benchmarking could be achieved through several approaches:
 
 - **User Ratings Comparison:** Analyzing the ratings, ranging from 1 to 5, that users assign to the responses provided by the AI models. This direct feedback serves as a valuable metric for assessing user satisfaction and the practical utility of the models' outputs.
@@ -142,6 +182,50 @@ These criteria collectively contribute to a comprehensive understanding of the A
 The following link provides access to a spreadsheet file detailing our testing process. The first tab includes various columns with the foundational test data. Subsequent tabs are dedicated to each AI model (OpenAI, Titan, Llama2, Coher), containing requests, responses, and notes. The final tab features a confusion matrix that illustrates the performance of each AI model.
 
 - link to Excel file
+
+## Benchmarking comparison between models
+
+| Feature | OpenAI ChatGPT | Bedrock Titan | Cohere Command | Meta Llama2 |
+|---|---|---|---|---|
+| Strengths | (Add Strengths here) | (Add Strengths here) | * Formatted the anwser without trouble | * Does understand which ingredients are edible and which aren't |
+| Weaknesses | (Add Weaknesses here) | (Add Weaknesses here) | * Can't understand Dutch * Isn't good in understanding what is edible and what isn't * Gives basic recipes which often do not take the requested diets into account | * Does not understand Dutch very well * Gives basic recipes when it can be creative * Often it doesn't give recipes which take the requested diet into account |
+| Implementation | (Add Implementation details here) | (Add Implementation details here) |  Easy ingredient implementation, harder recipe ingredient implementation  | Harder implementation of both prompts |
+
+## Benchmarking OpenAi ChatGPT
+
+## Benchmarking Bedrock Titan
+
+## Benchmarking Cohere Command
+
+When benchmarking Cohere Command, we realized it excelled in following instructions.
+
+We requested a JSON response for direct object creation, a task it handled more smoothly than other models.
+
+However, we also discovered its limitations in generating recipes, often failing to align with required dietary restrictions and preferences.
+
+It also wasn't the best in generating recipes in a creative way and adding matching ingredients to the recipe on its own.
+
+The primary issue arose when processing Dutch ingredients; it evidently lacked familiarity with Dutch, leading to difficulty in discerning edibility.
+
+This language barrier was consistent across other models we tested.
+
+The implementation of Cohere Command proved simpler compared to alternative models. 
+
+We could readily adapt prompts from the OpenAI model with minimal adjustments.
+
+While it didn't match the performance of the OpenAI model, as anticipated, it still surpassed our initial expectations.
+
+## Benchmarking Meta Llama2
+
+When benchmarking the Meta model called Llama2, we saw that it was good in filtering the edible and not edible ingredients when the ingredients were given in English.
+
+When the ingredients were given in Dutch, it did make some mistakes.
+
+It also gave very basic ingredients when it was able to be creative and could add whatever ingredient to the recipe as desired.
+
+Like other models, it didn't take dietary restrictions into account very well.
+
+The implementation of Llama2 was harder compared to the other models because I had to rewrite the original prompt and make it easier and clearer because the original prompt was too complicated.
 
 # Conclusion (DRAFT - Jonathan)
 
