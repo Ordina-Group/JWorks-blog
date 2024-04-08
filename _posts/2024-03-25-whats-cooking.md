@@ -25,12 +25,17 @@ So, join us as we explore the exciting world of AI in cooking, sharing our journ
 - [Introduction](#introduction)
 - [Table of contents](#table-of-contents)
 - [Our Project (DRAFT - Febe)](#our-project-draft---febe)
-- [Used Technologies (DRAFT)](#used-technologies)
+- [Used Technologies](#used-technologies) - [Frontend](#frontend) - [Backend](#backend) - [AWS Services](#aws-services) - [CI/CD Pipeline](#cicd-pipeline) - [AI Models](#ai-models)
 - [Application Architecture (DRAFT - Febe)](#application-architecture-draft---febe)
 - [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
 - [AI Benchmarking](#ai-benchmarking)
+  - [Benchmarking comparison between models](#benchmarking-comparison-between-models)
+  - [Benchmarking OpenAi ChatGPT](#benchmarking-openai-chatgpt)
+  - [Benchmarking Bedrock Titan](#benchmarking-bedrock-titan)
+  - [Benchmarking Cohere Command](#benchmarking-cohere-command)
+  - [Benchmarking Meta Llama2](#benchmarking-meta-llama2)
 - [Conclusion (DRAFT - Jonathan)](#conclusion-draft---jonathan)
-
+- [Our experience](#our-experience)
 
 # Our Project (DRAFT - Febe)
 
@@ -116,33 +121,18 @@ This gateway serves as a protective layer, mandating that all frontend requests 
 
 # Leveraging AI (DRAFT - Jonathan)
 
-In our setup, the backend gets data from the Chrome plugin via an HTTP request. It then dives into various tasks, many of which involve AI.
+In our application, the backend receives data via HTTP-request delivered by the Chrome plugin. It then carries out various operations on this data, with most of them leveraging AI.
 
-We can split these AI tasks into two main categories:
+The first operation is cleaning the data by removing undesired elements.
+In our context, this means sifting out inedible ingredients from a collection of potentially edible ones.
 
-- Data cleaning
-- Content generation
+Once we have this refined list of ingredients, we move on to our second operation, which involves generating a recipe. The AI model must consider all user-provided recipe requirements and consistently format its responses. Failure to do so could result in the AI model's responses being challenging to reliably parse into objects in a Java environment.
 
-First up, there's data cleaning. Here, the AI sorts through the data, getting rid of any bits we don't want. In our case, that means sifting out the not-so-tasty ingredients from a bunch that could be edible. 
+To address this issue, there are two potential solutions.
 
-Without AI, handling this would mean digging into a huge dataset and running loads of searches. But in our app, it's as easy as a single prompt and waiting for the AI's response. It's almost like the AI can tell at a glance if something's safe to eat—talk about stubborn!
+The first approach entails creating a custom AI model, allocating sufficient resources, and training it to align with your specific use case. Although the setup process may demand more time and resources, it could streamline prompt messages and decrease the number of tokens used in AI operations.
 
-Once we've got our ingredients list all sorted, it's time for the second AI task: cooking up some content in the form of recipes.
-
-The AI needs to consider all the recipe requirements and make sure its responses are consistent and clear. 
- 
-Otherwise, it's like trying to follow a recipe without knowing if you need a pinch or a dash—it just doesn't work!
-
-Now, there are a couple of ways to keep things consistent:
-
-- Custom AI Model: You make your own AI model from scratch. It takes more time and effort, but it fits your needs like a glove.
-- Standard AI Model with Detailed Prompts: You use an existing AI model but give it super detailed prompts to guide its performance. 
-
-We went with the second option. Even though the first one might be more efficient in terms of prompts, the second one lets us compare AI models easily by giving them all the same instructions. It's like a taste test for AI!
-
-And to make sure the AI's responses are properly formatted, we used a technique called "Few-Shot Prompting.".
-
-Basically, you give the AI a question and answer to learn from, and it picks up on the pattern. For this, we set up a template to base our prompt on, plugging in the user's data before sending it off to the AI.
+The second approach involves utilizing a standard AI model while supplying it with detailed prompt messages. This method simplifies the comparison of your AI model's out-of-the-box performance, a convenience we appreciated in our study. Given that prompts are stateless, we must furnish all necessary information, instructions, and context with each prompt. To ensure proper formatting of the AI model's responses, we implemented a prompting technique known as "few-shot prompting." Essentially, with few-shot prompting, you provide the AI model with an example question and answer from which it can discern a pattern. For this approach, we devised a template encompassing all required information.
 
 # AI Benchmarking
 
@@ -173,15 +163,19 @@ The following link provides access to a spreadsheet file detailing our testing p
 
 ## Benchmarking comparison between models
 
-|  | OpenAI ChatGPT | Bedrock Titan | Cohere Command | Meta Llama2 |
-|---|---|---|---|---|
-| Strengths | (Add Strengths here) | (Add Strengths here) | * Formatted the anwser without trouble | * Does understand which ingredients are edible and which aren't |
-| Weaknesses | (Add Weaknesses here) | (Add Weaknesses here) | * Can't understand Dutch * Isn't good in understanding what is edible and what isn't * Gives basic recipes which often do not take the requested diets into account | * Does not understand Dutch very well * Gives basic recipes when it can be creative * Often it doesn't give recipes which take the requested diet into account |
-| Implementation | (Add Implementation details here) | (Add Implementation details here) |  Easy ingredient implementation, harder recipe ingredient implementation  | Harder implementation of both prompts |
+|                | OpenAI ChatGPT                    | Bedrock Titan                                                                                                                                           | Cohere Command                                                                                                                                                       | Meta Llama2                                                                                                                                                     |
+| -------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Strengths      | (Add Strengths here)              | Once configured it's consistent in its output in terms of formatting                                                                                    | \* Formatted the anwser without trouble                                                                                                                              | \* Does understand which ingredients are edible and which aren't                                                                                                |
+| Weaknesses     | (Add Weaknesses here)             | Titan seems to have difficulties with elaborate prompts with lots of requirements and it can not resolve conflicting or unrealistic recipe requirements | _ Can't understand Dutch _ Isn't good in understanding what is edible and what isn't \* Gives basic recipes which often do not take the requested diets into account | _ Does not understand Dutch very well _ Gives basic recipes when it can be creative \* Often it doesn't give recipes which take the requested diet into account |
+| Implementation | (Add Implementation details here) | Building prompts for Titan was not a linear process and involves a lot of trial-and-error (see Weaknesses)                                              | Easy ingredient implementation, harder recipe ingredient implementation                                                                                              | Harder implementation of both prompts                                                                                                                           |
 
 ## Benchmarking OpenAi ChatGPT
 
 ## Benchmarking Bedrock Titan
+
+// Deze ga ik nog verder uitschrijven want het is iets te beknopt momenteel
+
+AWS Titan is an AI model that is, in its current stage, difficult to finetune using Few-Shot Prompting. Prompt instructions are often not reflected in the output. Without correctly configuring the model its output is extremely inconsistent in terms of structure, making its integration in an OOP environment a liability.
 
 ## Benchmarking Cohere Command
 
@@ -209,14 +203,9 @@ Setting up Llama2 was a bit tougher compared to the other models because we had 
 
 # Conclusion (DRAFT - Jonathan)
 
+As we translated the String responses from the AI model into Java objects, one thing became abundantly clear: consistency is key. Uniformity is paramount for guaranteeing seamless integration and reliable functionality within our application.
 
-Here's what we've discovered along the way:
-
-- Bringing AI into our code has let us streamline or even replace old-school solutions, ditching the need for hefty datasets. With the right setup, AI is a real game-changer for handling all sorts of data, especially the stuff users throw our way.
-
-- As we built our project, we noticed that different AI models handle big, complex prompts in different ways. Some shine in certain tasks but stumble in others. It's a reminder that picking the right model depends on what we need it to do.
-
-- When it comes to turning AI responses into Java objects, consistency is key. It's like trying to fit puzzle pieces together—if they're all different shapes and sizes, things just don't click.
+Throughout our project development, we've encountered variations in the comprehensiveness of AI models. While certain models shine in particular tasks, they may falter in others. This highlights the importance of thorough evaluation and selective criteria based on the application's specific requirements.
 
 # Our experience
 
