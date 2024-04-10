@@ -1,7 +1,7 @@
 ---
 layout: post
 authors: [ayoub_ait_cheikh_ahmed, jonathan_moermans, febe_cap]
-title: "Whats Cooking AI"
+title: "Whats Cooking with AI"
 image: /img/2024-03-25-whatscooking/whatscooking-banner.jpg
 tags: [AI, aws, internship, springAI, terraform, docker]
 category: AI
@@ -31,48 +31,52 @@ comments: true
 
 # Introduction
 
-In this article, we introduce "What's Cooking," a Chrome extension that helps you make recipes using AI. At the click of a button, you can see what recipes you can make with the items you have in your shopping basket.
+In this article, we introduce "What's Cooking with AI", a Chrome extension that helps you make recipes using AI. 
+At the click of a button, you can see what recipes you can make with the items you have in your shopping basket.
 
-We use fancy AI to figure out what recipes you might like based on your preferences and basket. In addition to just finding recipes, our application actually creates new ones!
+We use fancy AI to figure out what recipes you might like based on your preferences and basket. 
+In addition to just finding recipes, our application actually creates new ones! We'll talk about how we built the extension, using stuff like Next.js for the part you see, Spring Boot for the behind-the-scenes stuff, and Amazon's cloud services to make sure everything runs smoothly. 
+Plus, we'll explain how we set up everything step by step.
 
-We'll talk about how we built the extension, using stuff like Next.js for the part you see, Spring Boot for the behind-the-scenes stuff, and Amazon's cloud services to make sure everything runs smoothly. Plus, we'll explain how we set up everything step by step.
-
-We'll also dive into how we tested different AI models to see which one worked best. It was like a taste test for AI! And along the way, we'll share the ups and downs we faced while working on this project.
+We'll also dive into how we tested different AI models to see which one worked best. 
+It was like a taste test for AI! And along the way, we'll share the ups and downs we faced while working on this project.
 
 So, join us as we explore the exciting world of AI in cooking, sharing our journey and discoveries along the way.
 
 # Our Project
 
-For our internship project, we dished out something delightful: "What's Cooking with ChatGPT."
-
+For our internship project, we dished out something delightful: "What's Cooking with AI" 
 Imagine a Chrome extension that serves up AI-crafted recipes based on your online shopping list.
-
 To cook up this magic, we crafted custom web scrapers to gather data from major Belgian online retailers like Colruyt, Delhaize, Albert Heijn, and Aldi.
 
 In the backend (our Java setup), we seamlessly integrated Spring AI, opening the door to a variety of AI models, including heavy hitters like OpenAI's ChatGPT, Command by Cohere, Meta's LLama2 and Amazon's Titan.
 
-On the frontend, we spruced up the user interface with React and Next.js. Initially simple, just spitting out recipes, but soon we added a pinch of customization, letting users fine-tune preferences like dietary restrictions and culinary whims.
+On the frontend, we spruced up the user interface with React and Next.js. 
+Initially simple, just spitting out recipes, but soon we added a pinch of customization, letting users fine-tune preferences like dietary restrictions and culinary whims.
 
-But hold onto your chef's hat! We also added a nifty feature that conjures up a snapshot of what your dish might look like. And, of course, you can save those recipe gems for later in a convenient text file.
+But hold onto your chef's hat! 
+We also added a nifty feature that conjures up a snapshot of what your dish might look like. 
+And, of course, you can save those recipe gems for later in a convenient text file.
+
+And if reading isn't your thing while cooking, fear not! 
+We've integrated a feature that allows you to listen to the recipe being read aloud, ensuring your hands stay free and your focus remains on creating culinary masterpieces.
 
 # Application Architecture
 
-In our project, we implemented CI/CD to streamline the deployment process of our backend.
+Sure, here's the text split into nice paragraphs:
 
+In our project, we implemented CI/CD to streamline the deployment process of our backend. 
 This was achieved by leveraging various tools offered by different providers such as GitHub and Amazon Web Services (AWS).
 
-Initially, we began by writing workflow files to automate the execution of tests with each push to the development branch on GitHub.
-
+Initially, we began by writing workflow files to automate the execution of tests with each push to the development branch on GitHub. 
 Over time, this progressed into developing workflow files aimed at building and deploying our backend onto App Runner, thereby enabling seamless access to our backend without the necessity of local execution.
 
-Within our GitHub workflow files, we designed jobs dedicated to constructing Docker images using Maven, facilitating the subsequent pushing of the latest backend image to Amazon Elastic Container Registry (ECR).
-
+Within our GitHub workflow files, we designed jobs dedicated to constructing Docker images using Maven, facilitating the subsequent pushing of the latest backend image to Amazon Elastic Container Registry (ECR). 
 Following the image push to ECR, we employed Terraform to deploy this image onto App Runner.
 
 To streamline the orchestration of these jobs, which were authored in separate files for organizational clarity, we utilized a main workflow file to dictate the sequence in which the jobs were to be executed.
 
-In our pursuit of enhancing backend security on App Runner, we opted to integrate an API Gateway.
-
+In our pursuit of enhancing backend security on App Runner, we opted to integrate an API Gateway. 
 This gateway serves as a protective layer, mandating that all frontend requests transit through it and ensuring access to the backend only if the appropriate key is present in the request headers.
 
 # Leveraging AI (DRAFT - Jonathan)
@@ -141,34 +145,32 @@ AWS Titan is an AI model that is, in its current stage, difficult to finetune us
 
 ### Cohere Command
 
-When we tested out Cohere Command, it showed it was pretty good at following instructions, especially when it had to make a JSON response. It did better than the most models!
+When we tested out Cohere Command, it showed it was pretty good at following instructions, especially when it had to make a JSON response. 
+It did better than the most models!
 
-But when it came to making recipes, Cohere Command had some trouble. It couldn't handle special diets very well, and its cooking ideas weren't very exciting.
-
-And when it tried to understand Dutch ingredients, it got a bit confused. It couldn't tell which ones were edible and which ones weren't.
+But when it came to making recipes, Cohere Command had some trouble. 
+It couldn't handle special diets very well, and its cooking ideas weren't very exciting. 
+And when it tried to understand Dutch ingredients, it got a bit confused. 
+It couldn't tell which ones were edible and which ones weren't.
 
 Still, even with these problems, we didn't have too much trouble getting Cohere Command set up. 
 With just a few changes, we made it work.
 
-The implementation of the prompt to filter out the not edible ingredients was fairly simple since it didn't require much changes to the original OpenAI prompt for it to work on Cohere. 
-
-For the prompt to generate recipes it was another story.
-
-We had to make quite a bit more changes to the original OpenAI prompt for Cohere to understand what we want it to do. 
+The implementation of the prompt to filter out the not-edible ingredients was fairly simple since it didn't require many changes to the original OpenAI prompt for it to work on Cohere. 
+For the prompt to generate recipes, it was another story. 
+We had to make quite a bit more changes to the original OpenAI prompt for Cohere to understand what we want it to do.
 
 But while it might not have been as amazing as the OpenAI model, Cohere Command still impressed us!
 
 ### Meta Llama2
 
-When we put the Meta model Llama2 to the test, we found it pretty skilled at sorting out which ingredients were good to eat and which weren't, especially when they were in English.
-
-But when we tried it with Dutch ingredients, it got a bit mixed up and made some mistakes.
-
+When we put the Meta model Llama2 to the test, we found it pretty skilled at sorting out which ingredients were good to eat and which weren't, especially when they were in English. 
+But when we tried it with Dutch ingredients, it got a bit mixed up and made some mistakes. 
 It also tended to stick to basic ingredients, even when it had the chance to get creative and add whatever it wanted to the recipe.
 
-Just like the other models, it didn't do a great job of considering special diets.
-
-Setting up Llama2 was a bit tougher compared to the other models because we had to rewrite the original instructions to make them simpler and clearer. The original prompt of the OpenAi model was to complicated for Llama2!
+Just like the other models, it didn't do a great job of considering special diets. 
+Setting up Llama2 was a bit tougher compared to the other models because we had to rewrite the original instructions to make them simpler and clearer. 
+The original prompt of the OpenAI model was too complicated for Llama2
 
 # Used Technologies
 
@@ -221,15 +223,19 @@ Setting up Llama2 was a bit tougher compared to the other models because we had 
 # Our experience
 
 Our internship adventure wrapped up with us nailing our assignment.
+But let's be real—it wasn't all smooth sailing. 
+We faced a bunch of challenges as we tackled the project.
 
-But let's be real—it wasn't all smooth sailing. We faced a bunch of challenges as we tackled the project.
-
-Still, it was a seriously rewarding journey. Battling through obstacles and coming out on top taught us a ton.
-
-And none of it would've been possible without our awesome mentors and colleagues. Their guidance and wisdom were total game-changers every step of the way.
+Still, it was a seriously rewarding journey. 
+Battling through obstacles and coming out on top taught us a ton.
+And none of it would've been possible without our awesome mentors and colleagues. 
+Their guidance and wisdom were total game-changers every step of the way.
 
 # Conclusion (DRAFT - Jonathan)
 
-As we translated the String responses from the AI model into Java objects, one thing became abundantly clear: consistency is key. Uniformity is paramount for guaranteeing seamless integration and reliable functionality within our application.
+As we translated the String responses from the AI model into Java objects, one thing became abundantly clear: consistency is key. 
+Uniformity is paramount for guaranteeing seamless integration and reliable functionality within our application.
 
-Throughout our project development, we've encountered variations in the comprehensiveness of AI models. While certain models shine in particular tasks, they may falter in others. This highlights the importance of thorough evaluation and selective criteria based on the application's specific requirements.
+Throughout our project development, we've encountered variations in the comprehensiveness of AI models. 
+While certain models shine in particular tasks, they may falter in others. 
+This highlights the importance of thorough evaluation and selective criteria based on the application's specific requirements.
