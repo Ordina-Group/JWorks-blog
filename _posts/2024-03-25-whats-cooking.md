@@ -8,11 +8,32 @@ category: AI
 comments: true
 ---
 
+# Table of contents
+
+- [Introduction](#introduction)
+- [Our Project](#our-project)
+- [Application Architecture](#application-architecture)
+- [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
+- [Benchmarking](#ai-benchmarking)
+  - [Comparison between models](#comparison-between-models)
+  - [OpenAi ChatGPT](#openai-chatgpt)
+  - [Amazon's Titan](#amazons-titan)
+  - [Cohere Command](#cohere-command)
+  - [Meta Llama2](#meta-llama2)
+- [Used Technologies](#used-technologies) 
+  - [Frontend](#frontend) 
+  - [Backend](#backend) 
+  - [AWS Services](#aws-services) 
+  - [CI/CD Pipeline](#cicd-pipeline) 
+  - [AI Models](#ai-models)
+- [Our experience](#our-experience)
+- [Conclusion (DRAFT - Jonathan)](#conclusion-draft---jonathan)
+
 # Introduction
 
-In this article, we introduce "What's Cooking," a Chrome extension that helps you make recipes using AI. Just by clicking, you can see what recipes you can make with the stuff you have in your shopping basket.
+In this article, we introduce "What's Cooking," a Chrome extension that helps you make recipes using AI. At the click of a button, you can see what recipes you can make with the items you have in your shopping basket.
 
-We use fancy AI to figure out what recipes you might like based on your preferences and basket. In addition to just finding recipes, our AI actually creates new ones!
+We use fancy AI to figure out what recipes you might like based on your preferences and basket. In addition to just finding recipes, our application actually creates new ones!
 
 We'll talk about how we built the extension, using stuff like Next.js for the part you see, Spring Boot for the behind-the-scenes stuff, and Amazon's cloud services to make sure everything runs smoothly. Plus, we'll explain how we set up everything step by step.
 
@@ -20,24 +41,7 @@ We'll also dive into how we tested different AI models to see which one worked b
 
 So, join us as we explore the exciting world of AI in cooking, sharing our journey and discoveries along the way.
 
-# Table of contents
-
-- [Introduction](#introduction)
-- [Table of contents](#table-of-contents)
-- [Our Project (DRAFT - Febe)](#our-project-draft---febe)
-- [Used Technologies](#used-technologies) - [Frontend](#frontend) - [Backend](#backend) - [AWS Services](#aws-services) - [CI/CD Pipeline](#cicd-pipeline) - [AI Models](#ai-models)
-- [Application Architecture (DRAFT - Febe)](#application-architecture-draft---febe)
-- [Leveraging AI (DRAFT - Jonathan)](#leveraging-ai-draft---jonathan)
-- [AI Benchmarking](#ai-benchmarking)
-  - [Benchmarking comparison between models](#benchmarking-comparison-between-models)
-  - [Benchmarking OpenAi ChatGPT](#benchmarking-openai-chatgpt)
-  - [Benchmarking Bedrock Titan](#benchmarking-bedrock-titan)
-  - [Benchmarking Cohere Command](#benchmarking-cohere-command)
-  - [Benchmarking Meta Llama2](#benchmarking-meta-llama2)
-- [Conclusion (DRAFT - Jonathan)](#conclusion-draft---jonathan)
-- [Our experience](#our-experience)
-
-# Our Project (DRAFT - Febe)
+# Our Project
 
 For our internship project, we dished out something delightful: "What's Cooking with ChatGPT."
 
@@ -51,55 +55,7 @@ On the frontend, we spruced up the user interface with React and Next.js. Initia
 
 But hold onto your chef's hat! We also added a nifty feature that conjures up a snapshot of what your dish might look like. And, of course, you can save those recipe gems for later in a convenient text file.
 
-# Used Technologies
-
-### Frontend
-
-- **Next.js:** A React framework that enables functionalities such as server-side rendering and generating static websites, enhancing SEO, performance, and user experience.
-
-- **Chakra UI:** A simple, modular and accessible component library that provides the building blocks to build React applications with speed and ease.
-
-### Backend
-
-- **Spring Boot:** Simplifies the development of new Spring applications through convention over configuration, offering a wide range of functionalities for modern web services.
-
-- **Spring AI:** Spring AI is a framework for building AI applications in Java, inspired by Spring principles for ease of development.
-
-- **LLM (Large Language Models):** Offers advanced capabilities in natural language processing, understanding, generation, and translation, enabling sophisticated interaction and content creation.
-
-### AWS Services
-
-- **ECR (Elastic Container Registry):** Provides a Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images.
-
-- **ECS (Elastic Container Service):** A fully managed container orchestration service that makes it easy to run, stop, and manage containers on a cluster.
-
-- **App Runner:** Provides a managed service for developers to quickly deploy containerized web applications and APIs, without dealing with infrastructure management.
-
-- **Secret Manager:** Helps to protect access to applications, services, and IT resources without the upfront cost and complexity of managing a full infrastructure.
-
-- **DynamoDB:** A fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.
-
-- **API Gateway:** Offers a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
-
-- **API Gateway API Key:** Utilized for controlling and monitoring API usage and access, enhancing security and usage metrics.
-
-### CI/CD Pipeline
-
-- **GitHub Workflows:** Automates your software development workflows.
-
-- **Terraform:** An infrastructure as code software tool that allows you to build, change, and version infrastructure safely and efficiently.
-
-### AI Models
-
-- **OpenAI Models:** Provides advanced AI models like GPT (Generative Pre-trained Transformer) for natural language understanding, generation, and conversational AI capabilities.
-
-- **AWS AI Model Bedrock Titan:** Bedrock Titan AI is a suite of large language models offered by Amazon for building generative AI applications.
-
-- **Cohere Command:** Cohere Command is a powerful language model designed for enterprises, excelling at following instructions and completing complex tasks.
-
-- **Meta Llama2:** Meta Llama2 is a next-generation large language model known for its commercial-grade capabilities and open-source availability.
-
-# Application Architecture (DRAFT - Febe)
+# Application Architecture
 
 In our project, we implemented CI/CD to streamline the deployment process of our backend.
 
@@ -134,7 +90,7 @@ The first approach entails creating a custom AI model, allocating sufficient res
 
 The second approach involves utilizing a standard AI model while supplying it with detailed prompt messages. This method simplifies the comparison of your AI model's out-of-the-box performance, a convenience we appreciated in our study. Given that prompts are stateless, we must furnish all necessary information, instructions, and context with each prompt. To ensure proper formatting of the AI model's responses, we implemented a prompting technique known as "few-shot prompting." Essentially, with few-shot prompting, you provide the AI model with an example question and answer from which it can discern a pattern. For this approach, we devised a template encompassing all required information.
 
-# AI Benchmarking
+# Benchmarking
 
 An aspect that particularly intrigued us was the opportunity to benchmark the Generative AI models used in our project. This benchmarking could be achieved through several approaches:
 
@@ -161,15 +117,15 @@ The following link provides access to a spreadsheet file detailing our testing p
 
 - link to Excel file
 
-## Benchmarking comparison between models
+### Comparison between models
 
 |                | OpenAI ChatGPT                                                                                                                                                                                  | Bedrock Titan                                                                                                                                           | Cohere Command                                                                                                                                                       | Meta Llama2                                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Strengths      | The model gives overal good responses.But need to insist when something should be concidered when generating the response.                                                                      | Once configured it's consistent in its output in terms of formatting                                                                                    | \* Formatted the anwser without trouble                                                                                                                              | \* Does understand which ingredients are edible and which aren't                                                                                                |
-| Weaknesses     | Sometimes the json response is nog correctly generated. We noticed that the model generated recipes with toxic/ none-edible items. but when adjusting the prompt it did filter thoes items out. | Titan seems to have difficulties with elaborate prompts with lots of requirements and it can not resolve conflicting or unrealistic recipe requirements | _ Can't understand Dutch _ Isn't good in understanding what is edible and what isn't \* Gives basic recipes which often do not take the requested diets into account | _ Does not understand Dutch very well _ Gives basic recipes when it can be creative \* Often it doesn't give recipes which take the requested diet into account |
-| Implementation | The implementation of OpenAI was a good experience due to their fine documentation.                                                                                                             | Building prompts for Titan was not a linear process and involves a lot of trial-and-error (see Weaknesses)                                              | Easy ingredient implementation, harder recipe ingredient implementation                                                                                              | Harder implementation of both prompts                                                                                                                           |
+| Strengths      | The model gives overal good responses.But need to insist when something should be concidered when generating the response.                                                                      | Once configured it's consistent in its output in terms of formatting                                                                                    |  Cohere formatted the anwser without trouble                                                                                                                              |  Llama2 does understand which ingredients are edible and which aren't                                                                                                |
+| Weaknesses     | Sometimes the json response is nog correctly generated. We noticed that the model generated recipes with toxic/ none-edible items. but when adjusting the prompt it did filter thoes items out. | Titan seems to have difficulties with elaborate prompts with lots of requirements and it can not resolve conflicting or unrealistic recipe requirements | Cohere doesn't uderstand the dutch ingredients and isn't very good at understanding which ingredient is or is not edible. It also gives basic recipes even when it doesn't need to and doesn't take every diet or other preference into account. | Llama2 doesn't understand dutch very well. It also gives very basic recipes and does often not take diets and other preferences into account. |
+| Implementation | The implementation of OpenAI was a good experience due to their fine documentation.                                                                                                             | Building prompts for Titan was not a linear process and involves a lot of trial-and-error (see Weaknesses)                                              | Easy ingredient implementation, harder recipe implementation                                                                                              | Harder implementation of both prompts                                                                                                                           |
 
-## Benchmarking OpenAi ChatGPT
+### OpenAi ChatGPT
 
 Our experience with OpenAI's generative language model has been largely positive, marking one of our first successful interactions with advanced AI for content creation. The ease of integration and the comprehensive support provided have been standout features. However, it's important to note that while the model excels in many areas, there were instances where it fell short of our specific needs. This acknowledgment isn't a dismissal but an insight into what we thought that the model couldn't acheive concidering our requierments and expectations.
 
@@ -177,25 +133,32 @@ However, as with any complex AI system, the nuances of human language and the su
 
 One area that has proven particularly challenging involves the generation of content that adheres strictly to dietary preferences or restrictions. A notable example includes the model's unexpected difficulty in producing vegan recipes without including animal products like "Pork belly." This occurrence suggests a need for further refinement in the model's understanding and categorization of ingredients in relation to specific dietary guidelines. Additionally, the model's approach to generating lactose-free recipes, by substituting with "lactose-free" options, raises questions about its ability to navigate the nuances between different dietary requirements accurately.
 
-## Benchmarking Bedrock Titan
+### Amazon's Titan
 
 // Deze ga ik nog verder uitschrijven want het is iets te beknopt momenteel
 
 AWS Titan is an AI model that is, in its current stage, difficult to finetune using Few-Shot Prompting. Prompt instructions are often not reflected in the output. Without correctly configuring the model its output is extremely inconsistent in terms of structure, making its integration in an OOP environment a liability.
 
-## Benchmarking Cohere Command
+### Cohere Command
 
-When we tested out Cohere Command, it showed it was pretty good at following instructions, especially when it had to make a fancy JSON response. It did better than the most models!
+When we tested out Cohere Command, it showed it was pretty good at following instructions, especially when it had to make a JSON response. It did better than the most models!
 
-But when it came to making recipes, Cohere Command had some trouble. It couldn't handle special diets very well, and its cooking ideas weren't very exciting. It was like watching a new chef trying to do too much at once!
+But when it came to making recipes, Cohere Command had some trouble. It couldn't handle special diets very well, and its cooking ideas weren't very exciting.
 
 And when it tried to understand Dutch ingredients, it got a bit confused. It couldn't tell which ones were edible and which ones weren't.
 
-Still, even with these problems, we didn't have too much trouble getting Cohere Command set up. With just a few changes, we made it work.
+Still, even with these problems, we didn't have too much trouble getting Cohere Command set up. 
+With just a few changes, we made it work.
 
-While it might not have been as amazing as the OpenAI model, Cohere Command still impressed us!
+The implementation of the prompt to filter out the not edible ingredients was fairly simple since it didn't require much changes to the original OpenAI prompt for it to work on Cohere. 
 
-## Benchmarking Meta Llama2
+For the prompt to generate recipes it was another story.
+
+We had to make quite a bit more changes to the original OpenAI prompt for Cohere to understand what we want it to do. 
+
+But while it might not have been as amazing as the OpenAI model, Cohere Command still impressed us!
+
+### Meta Llama2
 
 When we put the Meta model Llama2 to the test, we found it pretty skilled at sorting out which ingredients were good to eat and which weren't, especially when they were in English.
 
@@ -205,13 +168,55 @@ It also tended to stick to basic ingredients, even when it had the chance to get
 
 Just like the other models, it didn't do a great job of considering special diets.
 
-Setting up Llama2 was a bit tougher compared to the other models because we had to rewrite the original instructions to make them simpler and clearer. The original instructions were just too complicated!
+Setting up Llama2 was a bit tougher compared to the other models because we had to rewrite the original instructions to make them simpler and clearer. The original prompt of the OpenAi model was to complicated for Llama2!
 
-# Conclusion (DRAFT - Jonathan)
+# Used Technologies
 
-As we translated the String responses from the AI model into Java objects, one thing became abundantly clear: consistency is key. Uniformity is paramount for guaranteeing seamless integration and reliable functionality within our application.
+### Frontend
 
-Throughout our project development, we've encountered variations in the comprehensiveness of AI models. While certain models shine in particular tasks, they may falter in others. This highlights the importance of thorough evaluation and selective criteria based on the application's specific requirements.
+- **Next.js:** A React framework that enables functionalities such as server-side rendering and generating static websites, enhancing SEO, performance, and user experience.
+
+- **Chakra UI:** A simple, modular and accessible component library that provides the building blocks to build React applications with speed and ease.
+
+### Backend
+
+- **Spring Boot:** Simplifies the development of new Spring applications through convention over configuration, offering a wide range of functionalities for modern web services.
+
+- **Spring AI:** Spring AI is a framework for building AI applications in Java, inspired by Spring principles for ease of development.
+
+- **LLM (Large Language Models):** Offers advanced capabilities in natural language processing, understanding, generation, and translation, enabling sophisticated interaction and content creation.
+
+### AWS Services
+
+- **ECR (Elastic Container Registry):** Provides a Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images.
+
+- **ECS (Elastic Container Service):** A fully managed container orchestration service that makes it easy to run, stop, and manage containers on a cluster.
+
+- **App Runner:** Provides a managed service for developers to quickly deploy containerized web applications and APIs, without dealing with infrastructure management.
+
+- **Secrets Manager:** Allows you to easily store and manage confidential information, such as passwords and access keys.
+
+- **DynamoDB:** A fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.
+
+- **API Gateway:** Offers a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
+
+- **API Gateway API Key:** Utilized for controlling and monitoring API usage and access, enhancing security and usage metrics.
+
+### CI/CD Pipeline
+
+- **GitHub Workflows:** Automates your software development workflows.
+
+- **Terraform:** An infrastructure as code software tool that allows you to build, change, and version infrastructure safely and efficiently.
+
+### AI Models
+
+- **OpenAI Models:** Provides advanced AI models like GPT (Generative Pre-trained Transformer) for natural language understanding, generation, and conversational AI capabilities.
+
+- **AWS AI Model Bedrock Titan:** Bedrock Titan AI is a suite of large language models offered by Amazon for building generative AI applications.
+
+- **Cohere Command:** Cohere Command is a powerful language model designed for enterprises, excelling at following instructions and completing complex tasks.
+
+- **Meta Llama2:** Meta Llama2 is a next-generation large language model known for its commercial-grade capabilities and open-source availability.
 
 # Our experience
 
@@ -222,3 +227,9 @@ But let's be real—it wasn't all smooth sailing. We faced a bunch of challenges
 Still, it was a seriously rewarding journey. Battling through obstacles and coming out on top taught us a ton.
 
 And none of it would've been possible without our awesome mentors and colleagues. Their guidance and wisdom were total game-changers every step of the way.
+
+# Conclusion (DRAFT - Jonathan)
+
+As we translated the String responses from the AI model into Java objects, one thing became abundantly clear: consistency is key. Uniformity is paramount for guaranteeing seamless integration and reliable functionality within our application.
+
+Throughout our project development, we've encountered variations in the comprehensiveness of AI models. While certain models shine in particular tasks, they may falter in others. This highlights the importance of thorough evaluation and selective criteria based on the application's specific requirements.
