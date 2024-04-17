@@ -1,22 +1,27 @@
 ---
 layout: post
 authors: [nicholas_meyers, ferre_vangenechten]
-title: 'Migration of our blog to a secure AWS static hosting'
-image: /img/2024-0sd4-01-kubecon-2024/banner.png
-tags: [cloud, cicd, cloud-native, landing-zone, security, seo, AWS, Github, migration, headers]
-category: DevOps
+title: 'Moving from GitHub Pages to AWS Static Hosting to Enhance Our Security'
+image: /img/2024-04-01-kubecon-2024/banner.png
+tags: [Security, Cloud-native, Cloud, SEO, AWS, GitHub, Migration, Security Headers]
+category: Security
 comments: true
 ---
 
-> KubeCon \| CloudNativeCon EU edition, en francaise ç'année.
+> Discover how our migration from GitHub Pages to AWS Static Hosting not only bolsters our security with vital security headers, 
+> but also enhances user experience and SEO performance.
 
-# Content table
-- [About the jworks tech blog](#about-the-jworks-tech-blog)
+- [About the JWorks tech blog](#about-the-jworks-tech-blog)
 - [Our previous situation](#our-previous-situation)
+- [The problem](#the-problem)
+- [Our solution](#our-solution)
+- [Action plan details](#action-plan-details)
+- [Result](#result)
+- [Conclusion](#conclusion)
 
-## About the jworks tech blog
-Since 2015, the Jworks Blog has been a place to learn about the latest tech, 
-experiences and projects, brought to you by Jworks, Java & Cloud area of Ordina Belgium. 
+## About the JWorks tech blog
+Since 2015, the JWorks Blog has been a place to learn about the latest tech, 
+experiences and projects, brought to you by JWorks, Java & Cloud area of Ordina Belgium. 
 Now, as tech keeps moving forward, we moved our blog too! 
 We want to keep giving you great content, but with a better and more secure experience.
 
@@ -43,7 +48,7 @@ We concluded that we faced a major problem with our security headers. We had non
 After some research we found that GitHub Pages doesn't provide an option to add these
 crucial security measures.
 
-FOTO ROOD
+<img src="{{ '/img/2024-04-23-secure-blog-migration/security_report_bad.png' | prepend: site.baseurl }}" alt="Bad Security Report" class="image fit" style="margin:0px auto; max-width:100%">
 
 ### What are security headers
 Security headers are like special instructions that a website sends to your web 
@@ -72,9 +77,10 @@ Why invest time in creating great content if it isn't safe to interact with? An 
 Google may label your site as unsafe which can damage your reputation and result in less clicks a month.
 
 #### Visitors
-Visitors can lose trust in your website and leave it.
+Visitors might lose trust and leave. This could harm your brand's reputation, 
+as users may see your site as less trustworthy, affecting how they perceive your business overall.
 
-## Our solution 
+## Our solution
 To address the security concerns, we made the decision to move our web hosting from GitHub
 Pages to a platform that allows us to configure security headers. This led us to migrate
 our blog to an Amazon S3 bucket within our AWS environment. Here we utilize AWS CloudFront
@@ -89,7 +95,7 @@ repository from GitHub Organization to GitHub Enterprise.
 However, the old repository remains in place to preserve the original 
 domain name and redirect users to our new website.
 
-### Action plan details
+## Action plan details
 We've used Terraform as Infrastructure as a Code combined with GitHub Actions to deploy all our resources.
 1. AWS WAF
 * Implemented **Rate limiting** to protect against DDoS Attacks.
@@ -124,14 +130,26 @@ FOTO DIAGRAM
 ## Result
 Through this transition to AWS infrastructure and the implementation of 
 comprehensive security measures, we've significantly enhanced the security 
-and reliability of our platform.
+and reliability of our blog.
 
-FOTO GROEN
+<img src="{{ '/img/2024-04-23-secure-blog-migration/security_report_good.png' | prepend: site.baseurl }}" alt="Good Security Report" class="image fit" style="margin:0px auto; max-width:100%">
 
 
 ## Conclusion
+Our migration from GitHub Pages to AWS Static Hosting marks a significant step forward in bolstering our website's security, 
+enhancing user experience, and improving SEO performance. 
+By implementing essential security measures such as security headers and leveraging the robust infrastructure provided by AWS, 
+we have fortified our defenses against potential threats, ensuring a safer online environment for both our users and our business. 
+Additionally, the transition enables us to deliver a smoother and more reliable user experience, enhancing trust and satisfaction among our audience.
+Moreover, the optimization for SEO ensures improved visibility and accessibility, strengthening. 
+With these enhancements in place, we are committed to providing a secure, seamless, and rewarding experience for all our users, 
+while maintaining the highest standards of security and performance.
 
-- Link naar Securityheader.com
+Curious if your website could use some enhancements too? Don't wait; take the first step and conduct a scan yourself on [Security Headers](https://securityheaders.com/){:target="_blank" rel="noopener noreferrer"}.
+It's a proactive way to ensure your website's security and performance are up to par, 
+giving you peace of mind while offering a seamless experience to your users.
+
+
 - UPCOMING SECURITY HEADERS
 * Cross-Origin-Embedder-Policy (COEP)
 * Cross-Origin-Opener-Policy (COOP)
