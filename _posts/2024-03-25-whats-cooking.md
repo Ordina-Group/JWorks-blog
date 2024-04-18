@@ -10,24 +10,23 @@ comments: true
 
 # Table of contents
 
-- [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Our Project](#our-project)
 - [Application Architecture](#application-architecture)
 - [Leveraging AI](#leveraging-ai)
 - [Benchmarking](#benchmarking)
-    - [Comparison between models](#comparison-between-models)
-    - [OpenAi ChatGPT](#openai-chatgpt)
-    - [Amazon's Titan](#amazons-titan)
-    - [Cohere Command](#cohere-command)
-    - [Meta Llama2](#meta-llama2)
+  - [Comparison between models](#comparison-between-models)
+  - [OpenAi ChatGPT](#openai-chatgpt)
+  - [Amazon's Titan](#amazons-titan)
+  - [Cohere Command](#cohere-command)
+  - [Meta Llama2](#meta-llama2)
 - [Used Technologies](#used-technologies)
-    - [Frontend](#frontend)
-    - [Backend](#backend)
-    - [AWS Services](#aws-services)
-    - [CI/CD Pipeline](#cicd-pipeline)
-    - [Infrastructure](#infrastructure)
-    - [AI Models](#ai-models)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [AWS Services](#aws-services)
+  - [CI/CD Pipeline](#cicd-pipeline)
+  - [Infrastructure](#infrastructure)
+  - [AI Models](#ai-models)
 - [Our experience](#our-experience)
 - [Conclusion](#conclusion)
 
@@ -42,7 +41,7 @@ We'll talk about how we built the extension, using stuff like Next.js for the pa
 Plus, we'll explain how we set up everything step by step.
 
 We'll also dive into how we tested different AI models to see which one worked best.
-It was like a taste test for AI! 
+It was like a taste test for AI!
 And along the way, we'll share the ups and downs we faced while working on this project.
 
 So, join us as we explore the exciting world of AI in cooking, sharing our journey and discoveries along the way.
@@ -110,7 +109,6 @@ Given that prompts are stateless, meaning there is no relation between previous 
 To ensure proper formatting of the AI model's responses, we implemented a prompting technique known as <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank">Few-Shot Prompting</a>.
 Essentially, with Few-Shot Prompting, you provide the AI model with an example question and answer from which it can discern a pattern.
 
-
 # Benchmarking
 
 An aspect that particularly intrigued us was the opportunity to benchmark the Generative AI models used in our project.
@@ -131,39 +129,38 @@ This benchmarking could be achieved through several approaches:
     - Failing to retain context throughout the interaction.
     - Not remembering previous responses or prompts, which is crucial for coherent and contextual conversation.
 
-  - **Overall Implementation Experience:** Reflecting on the entire process, including how well-documented and user-friendly the model and its implementation framework were. 
-  This encompasses ease of integration, clarity of documentation, and overall developer experience.
+  - **Overall Implementation Experience:** Reflecting on the entire process, including how well-documented and user-friendly the model and its implementation framework were.
+    This encompasses ease of integration, clarity of documentation, and overall developer experience.
 
-These criteria collectively contribute to a comprehensive understanding of the AI models' capabilities, user experience, and developer experience. 
+These criteria collectively contribute to a comprehensive understanding of the AI models' capabilities, user experience, and developer experience.
 By accuratly comparing these factors, we aim to give our humble opinion about the strengths and limitations of the Generative AI models within the scope of our project, paving the way for targeted improvements and informed choices in future endeavors.
 
 **Benchmarking material:**
-The following link provides access to a spreadsheet file detailing our testing process. 
-The first tab includes various columns with the foundational test data. 
-Subsequent tabs are dedicated to each AI model (OpenAI, Titan, Llama2, Cohere), containing requests, responses, and notes. 
+The following link provides access to a spreadsheet file detailing our testing process.
+The first tab includes various columns with the foundational test data.
+Subsequent tabs are dedicated to each AI model (OpenAI, Titan, Llama2, Cohere), containing requests, responses, and notes.
 The final tab features a confusion matrix that illustrates the performance of each AI model.
-
 
 ### Comparison between models
 
-|                | OpenAI ChatGPT                                                                                                                                                                                  | Amazon Titan                                                                                                                                           | Cohere Command                                                                                                                                                                                                                                   | Meta Llama2                                                                                                                                   |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Strengths      | The model gives overal good responses, but requires explicit instructions when taking in account restrictions whilst generating the recipe.                                                                      | Overal good responses. Once configured it's consistent in its output in terms of formatting.                                                                                    | Easily adapts responses to a specific format (such as JSON).                                                                                                                                                                                                      | Reliably distinguishes between edible and inedible ingredients.                                                                          |
-| Weaknesses     | Sometimes the JSON response is incorrectly generated. We noticed that the model generated recipes with inedible items. But when adjusting the prompt it did filter those items out. | Titan seems to have difficulties with elaborate prompts with lots of requirements and it can not resolve conflicting or unrealistic recipe requirements, for example a vegan recipe with meat.| Cohere doesn't understand Dutch names of ingredients and isn't secure in determining an ingredient's edibility. It also gives basic recipes even when it doesn't need to and doesn't take every diet or other preference into account. | Llama2 doesn't understand Dutch very well. It also gives very basic recipes and does often not take diets and other preferences into account. |
-| Implementation | The implementation of OpenAI was a pleasant experience due to their excellent documentation.                                                                                                             | Implementing Titan was not a linear process and involved excessive trial-and-error.                                             | Easy ingredient implementation, difficult recipe implementation.                                                                                                                                                                                     | Difficult implementation of both prompts.                                                                                                         |
+|                | OpenAI ChatGPT                                                                                                                                                                      | Amazon Titan                                                                                                                                                                                   | Cohere Command                                                                                                                                                                                                                         | Meta Llama2                                                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Strengths      | The model gives overal good responses, but requires explicit instructions when taking in account restrictions whilst generating the recipe.                                         | Overal good responses. Once configured it's consistent in its output in terms of formatting.                                                                                                   | Easily adapts responses to a specific format (such as JSON).                                                                                                                                                                           | Reliably distinguishes between edible and inedible ingredients.                                                                               |
+| Weaknesses     | Sometimes the JSON response is incorrectly generated. We noticed that the model generated recipes with inedible items. But when adjusting the prompt it did filter those items out. | Titan seems to have difficulties with elaborate prompts with lots of requirements and it can not resolve conflicting or unrealistic recipe requirements, for example a vegan recipe with meat. | Cohere doesn't understand Dutch names of ingredients and isn't secure in determining an ingredient's edibility. It also gives basic recipes even when it doesn't need to and doesn't take every diet or other preference into account. | Llama2 doesn't understand Dutch very well. It also gives very basic recipes and does often not take diets and other preferences into account. |
+| Implementation | The implementation of OpenAI was a pleasant experience due to their excellent documentation.                                                                                        | Implementing Titan was not a linear process and involved excessive trial-and-error.                                                                                                            | Easy ingredient implementation, difficult recipe implementation.                                                                                                                                                                       | Difficult implementation of both prompts.                                                                                                     |
 
 ### OpenAi ChatGPT
 
-Our experience with OpenAI's generative language model has been largely positive, marking one of our first successful interactions with advanced AI for content creation. 
-The ease of integration and the comprehensive support provided have been standout features. 
-However, it's important to note that while the model excels in many areas, there were instances where it fell short of our specific needs. 
+Our experience with OpenAI's generative language model has been largely positive, marking one of our first successful interactions with advanced AI for content creation.
+The ease of integration and the comprehensive support provided have been standout features.
+However, it's important to note that while the model excels in many areas, there were instances where it fell short of our specific needs.
 This acknowledgment isn't a dismissal but an insight into what we thought that the model couldn't acheive concidering our requierments and expectations.
 
-However, as with any complex AI system, the nuances of human language and the subtleties of specific requests can sometimes present challenges. For instance, while the model is generally adept at adhering to guidelines and generating safe and appropriate content, there have been instances where the outputs, such as recipes, inadvertently included toxic or non-edible items. 
+However, as with any complex AI system, the nuances of human language and the subtleties of specific requests can sometimes present challenges. For instance, while the model is generally adept at adhering to guidelines and generating safe and appropriate content, there have been instances where the outputs, such as recipes, inadvertently included toxic or non-edible items.
 Remarkably, adjusting the prompt has shown to effectively mitigate this issue, underscoring the importance of precise and thoughtful prompt engineering to guide the model's responses more accurately.
 
-One area that has proven particularly challenging involves the generation of content that adheres strictly to dietary preferences or restrictions. 
-A notable example includes the model's unexpected difficulty in producing vegan recipes without including animal products like "Pork belly." This occurrence suggests a need for further refinement in the model's understanding and categorization of ingredients in relation to specific dietary guidelines. 
+One area that has proven particularly challenging involves the generation of content that adheres strictly to dietary preferences or restrictions.
+A notable example includes the model's unexpected difficulty in producing vegan recipes without including animal products like "Pork belly." This occurrence suggests a need for further refinement in the model's understanding and categorization of ingredients in relation to specific dietary guidelines.
 Additionally, the model's approach to generating lactose-free recipes, by substituting with "lactose-free" options, raises questions about its ability to navigate the nuances between different dietary requirements accurately.
 
 ### Amazon's Titan
@@ -175,7 +172,8 @@ Without correctly configuring the model its output is extremely inconsistent in 
 Once set up to consistently format its responses in JSON, we focus on the content of the recipes.
 Titan outputs recipes which range from delicious to impossible, such a vegan dish with meat.
 
-In conclusion, Titan is a viable option if you're looking for an AI-model to use with Few-Shot Prompting. It's able to provide additional solutions although the actual implementation process is tedious. 
+In conclusion, Titan is a viable option if you're looking for an AI-model to use with Few-Shot Prompting. 
+It's able to provide additional solutions although the actual implementation process is tedious.
 
 ### Cohere Command
 
@@ -204,7 +202,7 @@ It also tended to stick to basic ingredients, even when it had the chance to get
 
 Just like the other models, it didn't do a great job of considering special diets.
 Setting up Llama2 was a bit tougher compared to the other models because we had to rewrite the original instructions to make them simpler and clearer.
-The original prompt of the OpenAI model was too complicated for Llama2
+The original prompt of the OpenAI model was too complicated for Llama2.
 
 # Used Technologies
 
@@ -241,7 +239,8 @@ The original prompt of the OpenAI model was too complicated for Llama2
 ### CI/CD Pipeline
 
 - **GitHub Workflows:** Automates your software development workflows.
-- 
+-
+
 ### Infrastructure
 
 - **Terraform:** An infrastructure as code software tool that allows you to build, change, and version infrastructure safely and efficiently.
