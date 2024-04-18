@@ -2,7 +2,7 @@
 layout: post
 authors: [nicholas_meyers, ferre_vangenechten]
 title: 'Moving from GitHub Pages to AWS Static Hosting to Enhance Our Security'
-image: /img/2024-04-01-kubecon-2024/banner.png
+image: /img/2024-04-23-secure-blog-migration/banner.png
 tags: [Security, Cloud-native, Cloud, SEO, AWS, GitHub, Migration, Security Headers]
 category: Security
 comments: true
@@ -125,7 +125,8 @@ This certificate will be integrated into our CloudFront configuration.
   * **X-XSS-Protection** to enable XSS protection on old browsers. Modern browsers uses the CSP headers to do this.
 
 ### Final infrastructure
-FOTO DIAGRAM
+<img src="{{ '/img/2024-04-23-secure-blog-migration/blog_infra.svg' | prepend: site.baseurl }}" alt="AWS infra" class="image fit" style="margin:0px auto; max-width:100%">
+
 
 ## Result
 Through this transition to AWS infrastructure and the implementation of 
