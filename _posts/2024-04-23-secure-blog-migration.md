@@ -97,7 +97,7 @@ We used Terraform as Infrastructure as a Code combined with GitHub Actions to de
 * Implemented **Rate limiting** to protect against DDoS Attacks.
 * Integrated Managed AWS Rules:
   * **Common Rules** to protect against exploitation of a wide range of vulnerabilities including those described in OWASP publications.
-  * **Known Bad Input Rules** to block requests patterns that are known to be invalid and are associated with exploitation or discovery of vulnerabilities.
+  * **Known Bad Input Rules** to block request patterns that are known to be invalid and are associated with exploitation or discovery of vulnerabilities.
   * **Amazon IP reputation List**  to block sources associated with bots or other threats.
 
 2. AWS S3 Bucket
@@ -108,8 +108,9 @@ We used Terraform as Infrastructure as a Code combined with GitHub Actions to de
 * We generated a certificate via AWS ACM to ensure secure connections for our visitors. 
 This certificate will be integrated into our CloudFront configuration.
 
-4. AWS Cloudfront
-* Initiated configuration of the origin, directing to our S3 bucket.
+4. AWS CloudFront
+* Initiated configuration of the CloudFront origin, which refers to the location where 
+content is stored and from where CloudFront retrieves content to serve to viewers. In our case it's directing to our S3 bucket.
 * Following the setup of CloudFront security, we proceeded to connect our WAF
 * Implemented crucial security header, including:
   * **Strict-Transport-Security (STS)** to enforce https
@@ -133,14 +134,10 @@ and reliability of our blog.
 
 
 ## Conclusion
-Our migration from GitHub Pages to AWS Static Hosting marks a significant step forward in bolstering our website's security, 
-enhancing user experience, and improving SEO performance. 
-By implementing essential security measures such as security headers and leveraging the robust infrastructure provided by AWS.
-We have fortified our defenses against potential threats, ensuring a safer online environment for both our users and our business. 
-Additionally, the transition enables us to deliver a smoother and more reliable user experience, enhancing trust and satisfaction among our audience.
-Moreover, optimization for SEO ensures improved visibility and accessibility. 
-With these enhancements in place, we are committed to providing a secure, seamless, and rewarding experience for all our users, 
-while maintaining the highest standards of security and performance.
+Our migration from GitHub Pages to AWS Static Hosting marks a significant step forward in increasing our website's security, 
+enhancing user experience, and improving SEO performance. Throughout this process we've learned some valuable insights into the 
+importance and benefits of using security headers. We're enthusiastic about revitalizing our blog in this manner and look 
+forward to sharing more engaging (and secure ;) ) posts with you in the years ahead.
 
 Curious if your website could use some enhancements too? Don't wait; take the first step and conduct a scan yourself on [Security Headers](https://securityheaders.com/){:target="_blank" rel="noopener noreferrer"}.
 It's a proactive way to ensure your website's security and performance are up to par, 
