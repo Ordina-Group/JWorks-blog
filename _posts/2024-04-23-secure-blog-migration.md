@@ -21,8 +21,8 @@ comments: true
 
 ## About the JWorks tech blog
 Since 2015, the JWorks Blog has been a place to learn about the latest tech, 
-experiences and projects, brought to you by JWorks, Java & Cloud area of Ordina Belgium. 
-Now, as tech keeps moving forward, we moved our blog too! 
+experiences and projects, brought to you by JWorks, the Java & Cloud area of Ordina Belgium. 
+Now, as tech keeps moving forward, we've moved our blog too! 
 We want to keep giving you great content, but with a better and more secure experience.
 
 In this post, we'll tell you all about our blog migration. 
@@ -45,7 +45,7 @@ and we wanted to maintain the same URL without any changes.
 ### No security headers
 We did a scan of our blog website to ensure its quality and security. 
 We concluded that we faced a major problem with our security headers. We had none...
-After some research we found that GitHub Pages doesn't provide an option to add these
+After some research, we found that GitHub Pages doesn't provide an option to add these
 crucial security measures.
 
 <img src="{{ '/img/2024-04-23-secure-blog-migration/security_report_bad.png' | prepend: site.baseurl }}" alt="Bad Security Report" class="image fit" style="margin:0px auto; max-width:100%">
@@ -74,7 +74,7 @@ keep you and your information safe while you're browsing the web.
 
 #### SEO
 Why invest time in creating great content if it isn't safe to interact with? An unsecured site puts users' online safety at risk and can undermine your SEO efforts. 
-Google may label your site as unsafe which can damage your reputation and result in less clicks a month.
+Google may label your site as unsafe, which can damage your reputation and result in less clicks a month.
 
 #### Visitors
 Visitors might lose trust and leave. This could harm your brand's reputation, 
@@ -88,7 +88,7 @@ to set up and enforce the necessary security headers.
 
 In addition, we've implemented an AWS WAF (Web Application Firewall) into our infrastructure
 to further enhance our website's security posture. Given our existing experience with AWS 
-through previous project, we decided to leverage the platform for its robus security features.
+through previous project, we decided to leverage the platform for its robust security features.
 
 By resolving this security issue, we seized the opportunity to migrate our blog 
 repository from GitHub Organization to GitHub Enterprise. 
@@ -138,19 +138,13 @@ and reliability of our blog.
 ## Conclusion
 Our migration from GitHub Pages to AWS Static Hosting marks a significant step forward in bolstering our website's security, 
 enhancing user experience, and improving SEO performance. 
-By implementing essential security measures such as security headers and leveraging the robust infrastructure provided by AWS, 
-we have fortified our defenses against potential threats, ensuring a safer online environment for both our users and our business. 
+By implementing essential security measures such as security headers and leveraging the robust infrastructure provided by AWS.
+We have fortified our defenses against potential threats, ensuring a safer online environment for both our users and our business. 
 Additionally, the transition enables us to deliver a smoother and more reliable user experience, enhancing trust and satisfaction among our audience.
-Moreover, the optimization for SEO ensures improved visibility and accessibility, strengthening. 
+Moreover, optimization for SEO ensures improved visibility and accessibility, strengthening. 
 With these enhancements in place, we are committed to providing a secure, seamless, and rewarding experience for all our users, 
 while maintaining the highest standards of security and performance.
 
 Curious if your website could use some enhancements too? Don't wait; take the first step and conduct a scan yourself on [Security Headers](https://securityheaders.com/){:target="_blank" rel="noopener noreferrer"}.
 It's a proactive way to ensure your website's security and performance are up to par, 
 giving you peace of mind while offering a seamless experience to your users.
-
-
-- UPCOMING SECURITY HEADERS
-* Cross-Origin-Embedder-Policy (COEP)
-* Cross-Origin-Opener-Policy (COOP)
-* Cross-Origin-Resource-Policy (CORP)
