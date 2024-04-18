@@ -15,18 +15,8 @@ comments: true
 - [Our Project](#our-project)
 - [Application Architecture](#application-architecture)
 - [Leveraging AI](#leveraging-ai)
-- [Benchmarking](#benchmarking)
-		- [Comparison between models](#comparison-between-models)
-		- [OpenAi ChatGPT](#openai-chatgpt)
-		- [Amazon's Titan](#amazons-titan)
-		- [Cohere Command](#cohere-command)
-		- [Meta Llama2](#meta-llama2)
-- [Used Technologies](#used-technologies)
-		- [Frontend](#frontend)
-		- [Backend](#backend)
-		- [AWS Services](#aws-services)
-		- [CI/CD Pipeline](#cicd-pipeline)
-		- [AI Models](#ai-models)
+- [Benchmarking](#benchmarking) - [Comparison between models](#comparison-between-models) - [OpenAi ChatGPT](#openai-chatgpt) - [Amazon's Titan](#amazons-titan) - [Cohere Command](#cohere-command) - [Meta Llama2](#meta-llama2)
+- [Used Technologies](#used-technologies) - [Frontend](#frontend) - [Backend](#backend) - [AWS Services](#aws-services) - [CI/CD Pipeline](#cicd-pipeline) - [AI Models](#ai-models)
 - [Our experience](#our-experience)
 - [Conclusion](#conclusion)
 
@@ -44,7 +34,21 @@ It was like a taste test for AI! And along the way, we'll share the ups and down
 
 So, join us as we explore the exciting world of AI in cooking, sharing our journey and discoveries along the way.
 
+<<<<<<< Updated upstream
+
 # Our Project
+
+=======
+
+# Table of contents
+
+stea
+
+# Our Project (DRAFT - Febe)
+
+For our internship project, we dished out something delightful: "What's Cooking with ChatGPT."
+
+> > > > > > > Stashed changes
 
 For our internship project, we dished out something delightful: "What's Cooking with AI"
 Imagine a Chrome extension that serves up AI-crafted recipes based on your online shopping list.
@@ -64,7 +68,7 @@ We've integrated a feature that allows you to listen to the recipe being read al
 
 # Application Architecture
 
-<img alt="Application Architecture Diagram" src="/img/2024-03-25-whatscooking/ArchitectureDiagramBlog.png" class="image fit">
+<img alt="Application Architecture Diagram" src="/img/2024-03-25-whatscooking/ArchitectureDiagramBlog.jpg" class="image fit">
 
 In our project, we implemented CI/CD to streamline the deployment process of our backend.
 This was achieved by leveraging various tools offered by different providers such as GitHub and Amazon Web Services (AWS).
