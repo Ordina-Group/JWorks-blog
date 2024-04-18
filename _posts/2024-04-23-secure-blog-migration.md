@@ -11,13 +11,9 @@ comments: true
 > Discover how our migration from GitHub Pages to AWS Static Hosting not only bolsters our security with vital security headers, 
 > but also enhances user experience and SEO performance.
 
-- [About the JWorks tech blog](#about-the-jworks-tech-blog)
-- [Our previous situation](#our-previous-situation)
-- [The problem](#the-problem)
-- [Our solution](#our-solution)
-- [Action plan details](#action-plan-details)
-- [Result](#result)
-- [Conclusion](#conclusion)
+{:.no_toc}
+- TOC
+{:toc}
 
 ## About the JWorks tech blog
 Since 2015, the JWorks Blog has been a place to learn about the latest tech, 
@@ -53,8 +49,8 @@ crucial security measures.
 ### What are security headers
 Security headers are like special instructions that a website sends to your web 
 browser when you visit it. These instructions tell your browser how to behave to 
-keep you safe while you're on that website. They help protect against common online 
-threats like hackers trying to steal your information or take control of your browser.
+keep you safe while you're on a website. They help protect against common online 
+threats like hackers trying to steal your information or taking control of your browser.
 
 For example, one security header might tell your browser to only communicate with
 the website over a secure connection, making sure that your data is encrypted. 
@@ -88,7 +84,7 @@ to set up and enforce the necessary security headers.
 
 In addition, we've implemented an AWS WAF (Web Application Firewall) into our infrastructure
 to further enhance our website's security posture. Given our existing experience with AWS 
-through previous project, we decided to leverage the platform for its robust security features.
+through previous projects, we decided to leverage the platform for its robust security features.
 
 By resolving this security issue, we seized the opportunity to migrate our blog 
 repository from GitHub Organization to GitHub Enterprise. 
@@ -96,20 +92,20 @@ However, the old repository remains in place to preserve the original
 domain name and redirect users to our new website.
 
 ## Action plan details
-We've used Terraform as Infrastructure as a Code combined with GitHub Actions to deploy all our resources.
+We used Terraform as Infrastructure as a Code combined with GitHub Actions to deploy all our resources.
 1. AWS WAF
 * Implemented **Rate limiting** to protect against DDoS Attacks.
 * Integrated Managed AWS Rules:
   * **Common Rules** to protect against exploitation of a wide range of vulnerabilities including those described in OWASP publications.
-  * **Known Bad Input Rules** to block requests patterns that are known to be invalid and are associated with  exploitation or discovery of vulnerabilities.
-  * **Amazon Ip reputation List**  to block sources associated with bots or other threats.
+  * **Known Bad Input Rules** to block requests patterns that are known to be invalid and are associated with exploitation or discovery of vulnerabilities.
+  * **Amazon IP reputation List**  to block sources associated with bots or other threats.
 
 2. AWS S3 Bucket
 * We created an S3 bucket that is fully private and only accessible by Cloudfront. 
 
 3. AWS ACM & Route 53
-* Created a subdomain for our blog using Route 53. 
-* Generated a certificate via AWS ACM to ensure secure connections for our visitors. 
+* We created a subdomain for our blog using Route 53. 
+* We generated a certificate via AWS ACM to ensure secure connections for our visitors. 
 This certificate will be integrated into our CloudFront configuration.
 
 4. AWS Cloudfront
@@ -117,7 +113,7 @@ This certificate will be integrated into our CloudFront configuration.
 * Following the setup of CloudFront security, we proceeded to connect our WAF
 * Implemented crucial security header, including:
   * **Strict-Transport-Security (STS)** to enforce https
-  * **Content-Security-Policy (CSP)** to protect your site from XSS attacks. By whitelisting resources of approved content, you can prevent the browser from loading malicious assets
+  * **Content-Security-Policy (CSP)** to protect your site from XSS attacks. By whitelisting resources of approved content you can prevent the browser from loading malicious assets.
   * **X-Frame-Options** to prevent your content from being used in a frame by attackers (clickjacking).
   * **X-Content-Type-Options** to stop the browser from MIME sniffing and force it to stick with the declared content-type. The only valid value for this header is `X-Content-Type-Options: no-sniff`.
   * **Referrer-Policy** to stop sending referrer info in the headers. This way we increase the users privacy when redirecting to other sites.
@@ -142,7 +138,7 @@ enhancing user experience, and improving SEO performance.
 By implementing essential security measures such as security headers and leveraging the robust infrastructure provided by AWS.
 We have fortified our defenses against potential threats, ensuring a safer online environment for both our users and our business. 
 Additionally, the transition enables us to deliver a smoother and more reliable user experience, enhancing trust and satisfaction among our audience.
-Moreover, optimization for SEO ensures improved visibility and accessibility, strengthening. 
+Moreover, optimization for SEO ensures improved visibility and accessibility. 
 With these enhancements in place, we are committed to providing a secure, seamless, and rewarding experience for all our users, 
 while maintaining the highest standards of security and performance.
 
