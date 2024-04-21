@@ -272,6 +272,8 @@ A traditional solution for this might involve a database and several queries.
 With the introduction of AI we were able to provide a solution through a single prompt.
 But beware, while parsing String responses from the AI model into complex Java objects, one thing becomes abundantly clear: consistency is key.
 
-Finally, throughout our project development, we encountered variations in the comprehensiveness of AI models.
-While certain models shine in particular tasks, they may falter in others.
-This highlights the importance of thorough evaluation and selective criteria based on the application's specific requirements.
+Finally, during our project we noticed that giving our AI too many instructions in one prompt could lead to unepected results.
+So it's better to keep each task well defined for the AI to understand it correctly. 
+In addition to this we found that different AI models have strengths and weaknesses. 
+Some are great at certain tasks but not so good at others. 
+This shows how important it is to carefully pick the right AI based on what you need it to do.
