@@ -165,15 +165,14 @@ Additionally, the model's approach to generating lactose-free recipes, by substi
 
 ### Amazon's Titan
 
-AWS Titan in its current stage is an AI model that is difficult to finetune using Few-Shot Prompting.
-Prompt instructions are often not reflected in the output making the implementation of Titan in your application time consuming.
-Without correctly configuring the model its output is extremely inconsistent in terms of structure, making its integration in an OOP environment a liability.
+Currently AWS Titan presents challenges when fine-tuning with Few-Shot Prompting as it often fails to reflect prompt instructions in its output.
+Thereby requiring time-consuming implementation in your application. 
+Failure to configure the model correctly results in highly inconsistent output structures, posing a liability when integrating it into an OOP environment.
 
-Once set up to consistently format its responses in JSON, we focus on the content of the recipes.
-Titan outputs recipes which range from delicious to impossible, such a vegan dish with meat.
+After configuring Titan to consistently format responses in JSON, our focus shifts to the content of the recipes it generates.
+Ranging from delicious to improbable, such as a vegan dish made with animal products.
 
-In conclusion, Titan is a viable option if you're looking for an AI-model to use with Few-Shot Prompting. 
-It's able to provide additional solutions although the actual implementation process is tedious.
+In conclusion, while Titan remains a viable option for those seeking an AI model compatible with Few-Shot Prompting, its implementation process proves tedious.
 
 ### Cohere Command
 
