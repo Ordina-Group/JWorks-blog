@@ -94,7 +94,7 @@ In our context this entails the AI's capability to reliably judge an array of in
 We expect that any obviously harmful, toxic, or otherwise inedible ingredients will be filtered out in this way.
 
 Once we have this refined list of ingredients, we move on to our second AI operation, which involves generating a recipe.
-The AI model must consider all user-provided recipe requirements and consistently format its responses.
+The AI model must consider all user-provided recipe requirements and consistently format its responses in JSON.
 Failure to do so could result in the AI model's responses being challenging to reliably parse into objects in a Java environment.
 
 To address this issue there are two potential solutions.
@@ -104,7 +104,7 @@ Although the setup process may demand more time and resources, it could streamli
 
 The second approach involves utilizing a standard AI model while supplying it with detailed prompt messages.
 Using this method does not require complex training nor advanced configuration of AI models, allowing us to compare their out-of-the-box performance by providing the same prompt to different AI models.
-Given that prompts are stateless, meaning there is no relation between previous or future prompts, we must furnish all necessary information, instructions, and context with each prompt.
+Given that prompts are stateless, meaning there is no relation between previous or future prompts, we must provide all necessary information, instructions and context in each prompt.
 
 To ensure proper formatting of the AI model's responses, we implemented a prompting technique known as <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank">Few-Shot Prompting</a>.
 Essentially, with Few-Shot Prompting, you provide the AI model with an example question and answer from which it can discern a pattern.
