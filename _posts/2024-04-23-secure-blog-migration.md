@@ -69,7 +69,7 @@ keep you and your information safe while you're browsing the web.
   - Involves hiding malicious elements under innocent-looking ones to deceive users into clicking on them.
 
 #### SEO
-Why invest time in creating great content if it isn't safe to interact with? An unsecured site puts users' online safety at risk and can undermine your SEO efforts. 
+Why invest time in creating great content if it isn't safe to interact with? An unsecured site puts users online safety at risk and can undermine your SEO efforts. 
 Google may label your site as unsafe, which can damage your reputation and result in less clicks a month.
 
 #### Visitors
