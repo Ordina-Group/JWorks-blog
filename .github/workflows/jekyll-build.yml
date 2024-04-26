@@ -5,6 +5,7 @@ on:
     branches:
       - source
   workflow_dispatch:
+  merge_group:
 
 permissions:
   contents: read
