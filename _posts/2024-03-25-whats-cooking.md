@@ -13,25 +13,17 @@ comments: true
 - [Introduction](#introduction)
 - [Our Project](#our-project)
 - [Application Architecture](#application-architecture)
-- [Leveraging AI](#leveraging-ai)
-- [Our experience](#our-experience)
+- [Leveraging AI](#leveraging-ai):
+	- [The Good](#the-good)
+	- [The Bad](#the-bad)
+	- [The Ugly](#the-ugly)
 - [Conclusion](#conclusion)
 
 # Introduction
 
-In this article, we introduce "What's Cooking with AI", a Chrome extension that helps you make recipes using AI.
-At the click of a button, you can see what recipes you can make with the items you have in your shopping basket.
-
-We use fancy AI to figure out what recipes you might like based on your preferences and basket.
-In addition to just finding recipes, our application actually creates new ones!
-We'll talk about how we built the extension, using stuff like Next.js for the part you see, Spring Boot for the behind-the-scenes stuff, and Amazon's cloud services to make sure everything runs smoothly.
-Plus, we'll explain how we set up everything step by step.
-
-We'll also dive into how we tested different AI models to see which one worked best.
-It was like a taste test for AI!
-And along the way, we'll share the ups and downs we faced while working on this project.
-
-So, join us as we explore the exciting world of AI in cooking, sharing our journey and discoveries along the way.
+We started our internship at Ordina with the assignment of developing an application which takes away the stress of deciding what's for dinner.
+And what better excuse do we need to test the culinary knowledge of several Large Language Models?
+This article will take you through the application's development process, highlighting its various aspects along the way.
 
 # Our Project
 
@@ -73,51 +65,41 @@ This serves as a protective layer, mandating that all frontend requests transit 
 
 # Leveraging AI
 
-In our application the user starts their culinary journey with a single click on the "Start" button, this delivers the information from the Chrome Extension to our backend via HTTP-request.
-Our backend then carries out various operations on this data with most of them leveraging AI.
+The manner in which we put the Large Language Models to use surpasses the simple Q&A type of prompting.
+We require that the content it delivers is not only relevant, but is structured in such a way we can further process it in an OOP environment.
+This makes the prompts highly parameterised and can prove quite challenging, depending on the exact model used.
 
-The first AI operation is cleaning the data by removing undesired elements.
-In our context this entails the AI's capability to reliably judge an array of ingredients, filtering out the inedible ones from a collection of potentially edible ingredients.
-We expect that any obviously harmful, toxic, or otherwise inedible ingredients will be filtered out in this way.
+## The Good
 
-Once we have this refined list of ingredients, we move on to our second AI operation, which involves generating a recipe.
-The AI model must consider all user-provided recipe requirements and consistently format its responses in JSON.
-Failure to do so could result in the AI model's responses being challenging to reliably parse into objects in a Java environment.
+By integrating AI we were able to implement solutions that would otherwise require additional assets.
+For us, this meant we did not have collect and deploy a large dataset for ingredients and recipes.
+This task was replaced by prompting Artificial Intelligence, cutting down on cost, resources, and time spent developing. 
 
-To address this issue there are two potential solutions.
+## The Bad
 
-The first approach entails creating a custom AI model, allocating sufficient resources, and training it to align with your specific use case.
-Although the setup process may demand more time and resources, it could streamline prompt messages and decrease the number of tokens used in AI operations.
+When our user requests a recipe, we start by checking whether the ingredients in their shopping basket are edible.
+This challenges the AI's capability to reliably judge a list of ingredients by filtering out the inedible.
+We expect that any harmful, toxic, or otherwise ingredients unsafe for human consumption will be filtered out this way... which is not always the case.
 
-The second approach involves utilizing a standard AI model while supplying it with detailed prompt messages.
-Using this method does not require complex training nor advanced configuration of AI models, allowing us to compare their out-of-the-box performance by providing the same prompt to different AI models.
-Given that prompts are stateless, meaning there is no relation between previous or future prompts, we must provide all necessary information, instructions and context in each prompt.
+As we now have our definitive list of ingredients, we can focus on crafting a recipe.
+The AI model must consider all user-provided requirements and consistently format its responses in a pre-determined manner.
+Any structural deviation in its response results in failure to parse it into a Java object.
 
-To ensure proper formatting of the AI model's responses, we implemented a prompting technique known as <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank">Few-Shot Prompting</a>.
-Essentially, with Few-Shot Prompting, you provide the AI model with an example question and answer from which it can discern a pattern.
+## The Ugly
 
-# Our experience
+To address the structural issue there are two potential solutions.
 
-Our internship adventure wrapped up with us nailing our assignment.
-But let's be real—it wasn't all smooth sailing.
-We faced a bunch of challenges as we tackled the project.
+The first approach is training a custom AI model.
+Although this requires additional time and resources, it could prove beneficial over time by streamlining prompt messages and decreasing the number of tokens used per prompt.
 
-Still, it was a seriously rewarding journey.
-Battling through obstacles and coming out on top taught us a ton.
-And none of it would've been possible without our awesome mentors and colleagues.
-Their guidance and wisdom were total game-changers every step of the way.
+The second approach involves utilizing an "untrained" AI model and supplying it with elaborate prompt messages.
+To ensure proper formatting of the AI model's response, we implemented a prompting technique known as <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank">Few-Shot Prompting</a>.
+Essentially, we provide it an examplatory mock object structure from which it can discern a pattern to apply in its own response.
+Using this method does not require complex training nor advanced configuration of AI models.
+Given that prompts are stateless, meaning there is no relation between previous or future prompts, we must provide all necessary information and instructions in each prompt.
 
 # Conclusion
 
-By integrating AI in our application we were able to implement solutions for problems that would otherwise require additional assets.
-
-For example, in our application we have a shopping basket full of items which we want to filter on edibility.
-A traditional solution for this might involve a database and several queries.
-With the introduction of AI we were able to provide a solution through a single prompt.
-But beware, while parsing String responses from the AI model into complex Java objects, one thing becomes abundantly clear: consistency is key.
-
-Finally, during our project we noticed that giving our AI too many instructions in one prompt could lead to unepected results.
-So it's better to keep each task well defined for the AI to understand it correctly. 
-In addition to this we found that different AI models have strengths and weaknesses. 
-Some are great at certain tasks but not so good at others. 
-This shows how important it is to carefully pick the right AI based on what you need it to do.
+Looking back, this project provided us the opportunity to get hands-on experience with various Amazon Web Services, DevOps, and many other aspects of project development.
+We got to play around with different types AI models and by exploring their capabilities we got to know their strengths and weaknesses.
+The experience we gained and the lessons we learned are definitely something we will take with us into future projects.
