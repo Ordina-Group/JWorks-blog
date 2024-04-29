@@ -28,9 +28,6 @@ comments: true
 We started our internship at Ordina with the assignment of developing an application which takes away the stress of deciding what's for dinner.
 And what better excuse do we need to test the culinary knowledge of several Large Language Models?
 This article will take you through the application's development process, highlighting its various aspects along the way.
-We started our internship at Ordina with the assignment of developing an application which takes away the stress of deciding what's for dinner.
-And what better excuse do we need to test the culinary knowledge of several Large Language Models?
-This article will take you through the application's development process, highlighting its various aspects along the way.
 
 # Our Project
 
@@ -40,7 +37,7 @@ To cook up this magic, we crafted custom web scrapers to gather data from major 
 
 If you let the AI do its job you'll get a recipe suggestion, for example:
 
-<img alt="Application Architecture Diagram" src="/img/2024-03-25-whatscooking/whatscooking-chrome-recipe.png" class="image fit">
+<img alt="Chrome extension recipe flow" src="/img/2024-03-25-whatscooking/whatscooking-chrome-recipe.png" class="image fit">
 
 As you can see, it isn't a simple recipe that gets generated. 
 We provide many features for our user, such as:
@@ -109,7 +106,7 @@ This makes the prompts highly parameterised and can prove quite challenging, dep
 ## The Good
 
 By integrating AI we were able to implement solutions that would otherwise require additional assets.
-For us, this meant we did not have collect and deploy a large dataset for ingredients and recipes.
+For us, this meant we did not have to collect and deploy a large dataset for ingredients and recipes.
 This task was replaced by prompting Artificial Intelligence, cutting down on cost, resources, and time spent developing. 
 
 ## The Bad
