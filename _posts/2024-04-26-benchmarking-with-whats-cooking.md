@@ -28,6 +28,11 @@ comments: true
 
 # Introduction
 
+For our internship project we made a chrome extension called "What's cooking with AI".
+In this second blogpost we will pull you through the more technical part of this project.
+You can read all about how we benchmarked the ai models we implemented, like OpenAi's ChatGPT and Meta's Llama2.
+You can also find a categorised list of all the technologies we used to create this project.
+
 # Benchmarking
 
 An aspect that particularly intrigued us was the opportunity to benchmark the Generative AI models used in our project.
@@ -85,7 +90,7 @@ Additionally, the model's approach to generating lactose-free recipes, by substi
 ### Amazon's Titan
 
 Currently AWS Titan presents challenges when fine-tuning with Few-Shot Prompting as it often fails to reflect prompt instructions in its output.
-Thereby requiring time-consuming implementation in your application. 
+Thereby requiring time-consuming implementation in your application.
 Failure to configure the model correctly results in highly inconsistent output structures, posing a liability when integrating it into an OOP environment.
 
 After configuring Titan to consistently format responses in JSON, our focus shifts to the content of the recipes it generates.
@@ -171,6 +176,8 @@ The original prompt of the OpenAI model was too complicated for Llama2.
 
 - **Large Language Models**: OpenAI ChatGPT, Amazon Titan, Cohere Command, Meta LLama2.
 
-
 # Conclusion
 
+Now that you know all about our more technical journey on this project, you may be inspired to create something with Ai yourself.
+Lucky for you, you won't have to worry about which ai model will be better at generating recipes.
+We gained a lot of experience with this project on different new technologies which we hopefully will be able to use in other future projects.
