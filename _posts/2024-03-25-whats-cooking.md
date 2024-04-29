@@ -123,8 +123,8 @@ The first approach is training a custom AI model.
 Although this requires additional time and resources, it could prove beneficial over time by streamlining prompt messages and decreasing the number of tokens used per prompt.
 
 The second approach involves utilizing an "untrained" AI model and supplying it with elaborate prompt messages.
-To ensure proper formatting of the AI model's response, we implemented a prompting technique known as <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank"  rel="noopener noreferrer">Few-Shot Prompting</a>.
-Essentially, we provide it an examplatory mock object structure from which it can discern a pattern to apply in its own response.
+To ensure proper formatting of the AI model's response, we implemented a custom prompting technique based on <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank"  rel="noopener noreferrer">Few-Shot Prompting</a>.
+Essentially, we provide it an example mock object structure which the AI can use a template to format its own response.
 Using this method does not require complex training nor advanced configuration of AI models.
 Given that prompts are stateless, meaning there is no relation between previous or future prompts, we must provide all necessary information and instructions in each prompt.
 
