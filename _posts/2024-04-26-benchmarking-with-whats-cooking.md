@@ -78,7 +78,7 @@ The final tab features a confusion matrix that illustrates the performance of ea
 Our experience with OpenAI's generative language model has been largely positive, marking one of our first successful interactions with advanced AI for content creation.
 The ease of integration and the comprehensive support provided have been standout features.
 However, it's important to note that while the model excels in many areas, there were instances where it fell short of our specific needs.
-This acknowledgment isn't a dismissal but an insight into what we thought that the model couldn't acheive concidering our requierments and expectations.
+This acknowledgment isn't a dismissal but an insight into what we thought that the model couldn't acheive concidering our requirements and expectations.
 
 However, as with any complex AI system, the nuances of human language and the subtleties of specific requests can sometimes present challenges. For instance, while the model is generally adept at adhering to guidelines and generating safe and appropriate content, there have been instances where the outputs, such as recipes, inadvertently included toxic or non-edible items.
 Remarkably, adjusting the prompt has shown to effectively mitigate this issue, underscoring the importance of precise and thoughtful prompt engineering to guide the model's responses more accurately.
@@ -162,7 +162,6 @@ The original prompt of the OpenAI model was too complicated for Llama2.
 ### CI/CD Pipeline
 
 - **GitHub Workflows:** Automates your software development workflows.
--
 
 ### Infrastructure
 
