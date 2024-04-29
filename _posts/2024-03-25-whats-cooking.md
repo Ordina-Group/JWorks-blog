@@ -17,10 +17,17 @@ comments: true
 	- [The Good](#the-good)
 	- [The Bad](#the-bad)
 	- [The Ugly](#the-ugly)
+- [Leveraging AI](#leveraging-ai):
+	- [The Good](#the-good)
+	- [The Bad](#the-bad)
+	- [The Ugly](#the-ugly)
 - [Conclusion](#conclusion)
 
 # Introduction
 
+We started our internship at Ordina with the assignment of developing an application which takes away the stress of deciding what's for dinner.
+And what better excuse do we need to test the culinary knowledge of several Large Language Models?
+This article will take you through the application's development process, highlighting its various aspects along the way.
 We started our internship at Ordina with the assignment of developing an application which takes away the stress of deciding what's for dinner.
 And what better excuse do we need to test the culinary knowledge of several Large Language Models?
 This article will take you through the application's development process, highlighting its various aspects along the way.
@@ -131,4 +138,5 @@ Given that prompts are stateless, meaning there is no relation between previous 
 # Conclusion
 
 Looking back, this project provided us the opportunity to get hands-on experience with various Amazon Web Services, DevOps, and many other aspects of project development.
-The experience we gained and the lessons learned are something we will take with us into future projects.
+We got to play around with different types AI models and by exploring their capabilities we got to know their strengths and weaknesses.
+The experience we gained and the lessons we learned are definitely something we will take with us into future projects.
