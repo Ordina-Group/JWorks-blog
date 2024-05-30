@@ -12,14 +12,14 @@ comments: true
 
 We can best introduce our internship project by its purpose: making your daily work life easier.
 And how would it do so?
-Let's assume you are the average consultant at Sopra Steria.
+Let's assume you are the average consultant.
 Then you probably have multiple meetings per week, if not multiple meetings per day.
-We, at team Transcribe, believe you should pay full attention to the topics being discussed, and you shouldn't be taking notes or write anything down at all.
-So we developed a software application that does that for you.
+We know how easy it is to get distracted during a meeting when taking notes or writing something down, so we developed a software application that does that for you. 
+With our service you'll be able to pay full attention to the topics being discussed.
 
 # What Transcribe does for you
 
-In a nutshell, our application takes an audio recording and transforms that into a summarized briefing which it delivers to you by e-mail.
+By leveraging multiple AI services, our application takes an audio recording and transforms that into a summarized briefing which it delivers to you by e-mail .
 This saves you the time and effort of manually transcribing and distributing meeting notes.
 It's our goal to make the user experience as convenient as possible, so we designed our user interface to be intuitive and minimalistic.
 Recording audio is possible under the "Audio"-tab, and supplying all other necessary data is possible through a simple form under the "Data"-tab.
@@ -47,13 +47,17 @@ Our interaction with this model is straightforward: we input the transcript into
 
 After we have our full and summarised transcription, we deliver it per e-mail to our user's inbox using AWS Simple Notification Service.
 
-<img alt="Transcribe application flow" src="/img/2024-05-17-transcribe/transcribe-application-flow.png" class="image fit">
+# In conclusion
 
-# Future improvements
-
-During the transcribe project internship we came across several potential enhancements or features that could be implemented if the time was available. 
-Several points that could be improved or added, such as the following:
+Despite the project's limited development time of 2 months, we came across several potential enhancements or features that could be implemented in the future.
+Such as the following:
 
 - E-mail customization: Customise the content received
 - Live transcription: Real-time conversation subtitling
 - Integrating with existing chat applications
+
+Looking back on this project, we gained hands-on experience with a variety of Amazon Web Services such as IAM, API Gateway, Lambda, Transcribe, Bedrock, and SNS. 
+We also learned to work with the Java and Node AWS SDKs, and understood the fundamentals of Terraform for deploying these services.
+Setting up a CI/CD pipeline in accordance with best practices further solidified our understanding of DevOps.
+
+Last but not least, we'd like to thank our mentors Femke Tack and Lander Mariën for their guidance, support and inspiration throughout the assignment.
