@@ -19,7 +19,7 @@ With our service you'll be able to pay full attention to the topics being discus
 
 # What Transcribe does for you
 
-By leveraging multiple AI services, our application takes an audio recording and transforms that into a summarized briefing which it delivers to you by e-mail .
+By leveraging multiple AI services, our application takes an audio recording and transforms that into a summarized briefing which it delivers to you by e-mail.
 This saves you the time and effort of manually transcribing and distributing meeting notes.
 It's our goal to make the user experience as convenient as possible, so we designed our user interface to be intuitive and minimalistic.
 Recording audio is possible under the "Audio"-tab, and supplying all other necessary data is possible through a simple form under the "Data"-tab.
