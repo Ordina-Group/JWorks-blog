@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Setup Ruby
         uses: ruby/setup-ruby@70da3bbf44ac06db1b0547ce2acc9380a5270d1e # v1.175.0
         with:
@@ -54,7 +54,7 @@ jobs:
           owner: ${{ github.repository_owner }}
           repositories: "jworks-terraform-modules"
       - name: Checkout
-        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
       - name: Setup git creds
         run: git config --global url."https://${{ vars.ORDINA_GROUP_BOT_APP_ID }}:${{ steps.repository-token.outputs.token }}@github".insteadOf https://github
 
