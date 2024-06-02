@@ -128,14 +128,11 @@ yannick_vergeylen:
 ryan_de_gruyter:
   first_name: Ryan
   last_name: de Gruyter
-  github: ryandegruyter
-  linkedin: ryandg
   permalink: /author/ryan-de-gruyter/
-  avatar: ryan-de-gruyter.jpg
-  title: Frontend Developer
+  avatar: no-image.jpg
+  title: Software Engineer
   email: ryan.degruyter@ordina.be
-  phone: +32479079468
-  bio: Ryan is a Software Engineer at Ordina Belgium. He is dedicated to writing clean code and building maintainable, user friendly web applications in TypeScript. Ryan is also an Angular expert who enjoys giving beginner and advanced Angular courses. In his spare time, he practices martial arts and enjoys playing the guitar.
+  bio: Ryan is a Software Engineer at Ordina Belgium. He is dedicated to writing clean code and building maintainable, user friendly applications. Ryan is also an Angular expert who enjoys giving beginner and advanced Angular courses.
   inactive: true
 steve_de_zitter:
   first_name: Steve
