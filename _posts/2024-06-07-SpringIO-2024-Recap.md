@@ -37,6 +37,7 @@ But an honest mention here was in place.
 * [And many more](#and-many-more)
 
 ## Code Review
+
 An honest talk about code review and how to deal with it came from [Paco van Beckhoven](https://x.com/DevPaco){:target="_blank" rel="noopener noreferrer"}. 
 The title made it clear from the start: _Cracking the Code Review: from Guesswork to Automated Guidance_. 
 The presentation can be found [here](https://www.slideshare.net/slideshow/cracking-the-code-review-at-springio-2024/269479679).
@@ -51,12 +52,14 @@ The give aways:
 So most of it will be explained in the recording, but in this case you have some giveaways without listening and viewing it.
 
 ## Tweaking Spring Security
+
 [Daniel Garnier-Moiroux](https://x.com/kehrlann){:target="_blank" rel="noopener noreferrer"} enlightened us on how to tweak Spring Security 
 and what the next steps should be when using it. 
 The path Spring Security has taken to structurize the configuration to let it make much more sense is a big win. 
 The ease to add custom filters and knowing where to put them was my biggest take-away of the session.
 
 ## Spring and Jakarta EE
+
 Why Spring Matters to Jakarta EE and Vice Versa was the talk that [Ivar Grimstad](https://x.com/ivar_grimstad){:target="_blank" rel="noopener noreferrer"} had forseen for Spring I/O. 
 He explained the history of Jakarta EE and what the new features are in the upcoming release 11. 
 The new feature is Jakarta Data 1.0 that had a great view on Spring Data. 
@@ -65,16 +68,18 @@ Another example is Spring Mail that is just a wrapper around Jakarta Mail.
 So fellow Spring developers, we can't ignore Jakarta EE.
 
 ## Spring Modulith
+
 We followed multiple sessions about Spring Modulith, the first one was presented by [Cora Iberkleid](https://x.com/ciberkleid){:target="_blank" rel="noopener noreferrer"}. 
 She talked during the keynote about this topic and this session was a continuation. 
 We learned how to start implementing Spring Modulith in a legacy application. 
 Cora inspired our team to take a look, this was because of the automated documentation and the implementation of the Transactional Outbox Pattern.
 
-Maciej Walkowiak's presentation and demo took a whole other approach on Spring Modulith by explaining what Aggregates, Value Objects, Repositories, Domain Events are.
+[Maciej Walkowiak's](https://x.com/maciejwalkowiak){:target="_blank" rel="noopener noreferrer"} presentation and demo took a whole other approach on Spring Modulith by explaining what Aggregates, Value Objects, Repositories, Domain Events are.
 
 From both of them we received much information and we're going to try to put them in practice in our projects.
 
 ## Bootiful Spring Boot 3
+
 This talk was given [Josh Long](https://x.com/starbuxman){:target="_blank" rel="noopener noreferrer"} and was voted the most popular talk. 
 We understand why! 
 
@@ -89,6 +94,7 @@ All in his interesting, humorous style of presenting, it was great!
 See the talk here on [Youtube](https://www.youtube.com/watch?v=2Aa5uQozbJQ){:target="_blank" rel="noopener noreferrer"}.
 
 ## Introducing Spring AI
+
 AI is all around us and becoming more and more important. 
 Spring is giving us all the tools we need to use it ourselves! 
 This session, given by [Christian Tzolov](https://x.com/christzolov){:target="_blank" rel="noopener noreferrer"} & [Mark Pollack](https://x.com/markpollack){:target="_blank" rel="noopener noreferrer"}, introduces us to the wonderous world of Spring AI.
@@ -97,6 +103,7 @@ It learned us how to create effective AI prompts, including user-defined functio
 But also how to use Vector Databases to store and retrieve your data.
 
 ## And many more
+
 There were many talks, too many to follow them all. 
 Luckily, they were all recorded and can be viewed on the [Spring IO Youtube Channel](https://www.youtube.com/playlist?list=PLe6FX2SlkJdQyqVIMrhYRYx-3KYDASifZ).
 
