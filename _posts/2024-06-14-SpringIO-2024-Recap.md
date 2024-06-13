@@ -2,7 +2,7 @@
 layout: post
 authors: [maarten_casteels, wouter_nivelle]
 title: 'Spring I/O 2024 - Recap'
-image: /img/2024-06-07-spring-io-2024/header.jpg
+image: /img/2024-06-14-spring-io-2024/header.jpg
 tags: [springio, spring io, conference, spring]
 category: Conference
 comments: false
@@ -18,13 +18,13 @@ We want to thank [Sergi Almar](https://x.com/sergialmar){:target="_blank" rel="n
 
 ---
 
-<img alt="The auditorium" src="{{ '/img/2024-06-07-spring-io-2024/auditorium.jpg' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
+<img alt="The auditorium" src="{{ '/img/2024-06-14-spring-io-2024/auditorium.jpg' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
 
 Our Maarten went a little bit beyond scope of the conference. 
 He hasn't spammed every post with a reply, or created virtual and/or physical meetups during other conference talks. 
 But an honest mention here was in place.
 
-<img alt="Leaderboard" src="{{ '/img/2024-06-07-spring-io-2024/leaderboard.png' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
+<img alt="Leaderboard" src="{{ '/img/2024-06-14-spring-io-2024/leaderboard.png' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
 
 # Talks
 
@@ -83,7 +83,7 @@ From both of them we received much information and we're going to try to put the
 This talk was given [Josh Long](https://x.com/starbuxman){:target="_blank" rel="noopener noreferrer"} and was voted the most popular talk. 
 We understand why! 
 
-<img alt="Bootiful Spring Boot" src="{{ '/img/2024-06-07-spring-io-2024/bootiful.jpg' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
+<img alt="Bootiful Spring Boot" src="{{ '/img/2024-06-14-spring-io-2024/bootiful.jpg' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
 
 His first line was:
 > There's never been a better time to be a Java and Spring Boot developer
@@ -111,4 +111,4 @@ Luckily, they were all recorded and can be viewed on the [Spring IO Youtube Chan
 
 We want to close this adventure by thanking our company [Ordina](https://www.ordina.com/){:target="_blank" rel="noopener noreferrer"}, a [Sopra Steria Company](https://www.soprasteria.com/){:target="_blank" rel="noopener noreferrer"}, for letting us visit this awesome conference.
 
-<img alt="Participants" src="{{ '/img/2024-06-07-spring-io-2024/participants.jpg' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
+<img alt="Participants" src="{{ '/img/2024-06-14-spring-io-2024/participants.jpg' | prepend: site.baseurl }}" class="image fit" style="margin:0px auto; max-width: 750px;">
