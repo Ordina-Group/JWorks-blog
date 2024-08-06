@@ -54,7 +54,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    mini_magick (4.12.0)
+    mini_magick (4.13.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (5.1.0)
@@ -85,7 +85,7 @@ DEPENDENCIES
   jekyll-paginate (= 1.1.0)
   jekyll-redirect-from (= 0.16.0)
   jekyll-sass-converter (= 3.0.0)
-  mini_magick (= 4.12.0)
+  mini_magick (= 4.13.2)
 
 RUBY VERSION
    ruby 3.2.2p53
