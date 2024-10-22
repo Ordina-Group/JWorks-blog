@@ -24,10 +24,12 @@ These books taught me the value of clean code.
 And as a junior developer, I want to share some of the key lessons that have changed the way I approach my work.
 
 ## Clean code
+<img alt="mentoring" src="{{ '/img/2024-10-25-clean-code-and-clean-coder/clean-code.png' | prepend: site.baseurl }}"  style="float: right !important; max-width: 180px;">
+
 Published in 2008, Uncle Bob’s Clean Code refers to a set of guidelines and practices aimed at making software easier to understand and maintain.
 
 I'll be discussing three principles from Uncle Bob's Clean Code that I've implemented the most in my work. 
-While there are many valuable principles outlined in the book, these particular ones have had form the basis in my opinion. 
+While there are many valuable principles outlined in the book, these particular ones form the basis in my opinion. 
 Additionally, I’ll explore two concepts that I found especially compelling: Test-Driven Development (TDD) and the Boy Scout Rule.
 
 ### Basic Clean Code Principles
@@ -106,6 +108,8 @@ Not only did I feel like I was leaving the codebase in a better state, but it al
 In the past, I might have just rushed through a change to get it working, but taking the time to improve the code helped me grasp the logic behind it more deeply.
 
 ## The Clean Coder
+<img alt="mentoring" src="{{ '/img/2024-10-25-clean-code-and-clean-coder/the-clean-coder.png' | prepend: site.baseurl }}"  style="float: left !important; max-width: 180px; margin-right: 20px;">
+
 Published in 2011, Uncle Bob's The Clean Coder takes a deeper dive into the mindset and principles that underpin professional software development. 
 While Clean Code focuses on the technical aspects of writing code, The Clean Coder emphasizes the importance of professionalism and ethical responsibility in the craft of coding. 
 Uncle Bob encourages developers to adopt a disciplined approach to their work, stressing that being a clean coder means not only producing high-quality code but also valuing communication, collaboration, and continual learning.
@@ -142,6 +146,7 @@ A good mentor not only shares technical knowledge but also offers insights into 
 
 From my perspective, having a solid mentor has been a game-changer for me as a programmer. 
 I've been fortunate to work alongside colleagues who are not only skilled but also willing to share their expertise and provide guidance.
+<img alt="mentoring" src="{{ '/img/2024-10-25-clean-code-and-clean-coder/mentoring.png' | prepend: site.baseurl }}"  style="margin-left:250px; max-width: 400px;">
 
 ## Conclusion
 As I continue my journey as a developer, I realize that I’m learning something new every day. 
