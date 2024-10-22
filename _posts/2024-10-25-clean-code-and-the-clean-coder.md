@@ -24,7 +24,11 @@ These books taught me the value of clean code.
 And as a junior developer, I want to share some of the key lessons that have changed the way I approach my work.
 
 ## Clean code
-Published in 2008, Uncle Bob’s Clean Code refers to a set of guidelines and practices aimed at making software easier to understand and maintain. 
+Published in 2008, Uncle Bob’s Clean Code refers to a set of guidelines and practices aimed at making software easier to understand and maintain.
+
+I'll be discussing three principles from Uncle Bob's Clean Code that I've implemented the most in my work. 
+While there are many valuable principles outlined in the book, these particular ones have had form the basis in my opinion. 
+Additionally, I’ll explore two concepts that I found especially compelling: Test-Driven Development (TDD) and the Boy Scout Rule.
 
 ### Basic Clean Code Principles
 While there are many clean code principles I've learned, these three are the ones I've implemented the most.
