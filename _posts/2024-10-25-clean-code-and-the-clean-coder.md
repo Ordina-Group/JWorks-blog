@@ -16,8 +16,8 @@ comments: true
 ## Introduction
 When I first started as a junior developer, I was focused on one thing: making my code work. 
 I was focused on learning the basics, solving bugs, and understanding how all the pieces fit together. 
-In the rush to learn everything; I often overlooked the fundamentals of writing clean, maintainable code. 
-Writing tests, or thinking about readability, or something as basic as meaningful variable names all felt secondary when all I was trying to do was get the program to work.
+In the rush to learn everything; I often overlooked the fundamentals of writing clean, maintainable code.
+Writing tests, or thinking about readability, or something as basic as meaningful variable names all felt secondary when I was trying to get the program to work.
 
 However, in my effort to learn and grow, a colleague recommended that I read Uncle Bob's Clean Code and The Clean Coder. 
 These books taught me the value of clean code. 
@@ -33,14 +33,17 @@ While there are many valuable principles outlined in the book, these particular 
 Additionally, I’ll explore two concepts that I found especially compelling: Test-Driven Development (TDD) and the Boy Scout Rule.
 
 ### Basic Clean Code Principles
-While there are many clean code principles I've learned, these three are the ones I've implemented the most.
-
 #### 1. Meaningful Variable and Function Names
 Using descriptive names helps convey the purpose of variables and functions, making the code easier to understand.
 
-Example: Instead of naming a variable d (elapsed time in days), use elapsedTimeInDays to clearly indicate its purpose.
+Example: Instead of naming a variable `d` (elapsed time in days), use `elapsedTimeInDays` to clearly indicate its purpose. 
+Or instead of a function name called `calc()`, use `calculateElapsedTime()`.
 ```java
     int elapsedTimeInDays;
+    
+    int calculateElapsedTime(int startDay, int endDay) {
+        return endDay - startDay;
+    }
 ```
 
 #### 2. Keep Functions and Methods Short
@@ -50,6 +53,27 @@ This principle encourages developers to break down complex operations into small
 
 Example: Instead of a long method that does multiple things, you could break it down into smaller methods.
 ```java
+    // Long method that does multiple things
+    void processOrder(Order order) {
+        // Validate the order
+        if (order == null || order.getItems().isEmpty()) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+    
+        // Calculate total price
+        double total = 0;
+        for (Item item : order.getItems()) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        order.setTotalPrice(total);
+    
+        // Send confirmation email
+        EmailService emailService = new EmailService();
+        emailService.sendOrderConfirmation(order.getCustomerEmail(), order);
+    }
+
+    
+    // Short method that will call other methods
     void processOrder(Order order) {
         validateOrder(order);
         calculateTotal(order);
@@ -58,7 +82,7 @@ Example: Instead of a long method that does multiple things, you could break it 
 ```
 
 #### 3. DRY (Don't Repeat Yourself) Principle
-As Uncle Bob states, “Duplication may be the root of all evil in software.” 
+As Uncle Bob states, "Duplication may be the root of all evil in software."
 The DRY principle emphasizes the importance of reducing duplication in your code to reduce the potential for errors.
 When the same code appears in multiple places, any changes require updates in every location, increasing the risk of inconsistencies and errors.
 
@@ -132,8 +156,8 @@ Uncle Bob tells us, that as developers, we should always be working to improve o
 He encourages us to refine our abilities through regular coding exercises, side projects, or collaborative coding sessions with others. 
 Uncle Bob’s suggests that if you work 40 hours a week, you should be spending an additional 20 hours on self-improvement. 
 Now, don’t take that literally, but understand the essence of what he’s saying. 
-It’s not necessarily about the amount of time; it’s about making learning a priority. 
-Whether it’s reading a book, working on a side project, doing coding katas, or even just experimenting with new technologies, the key is to dedicate time to growing as a developer.
+It’s not necessarily about the amount of time; it’s about making learning a priority.
+Whether it’s reading a book, working on a side project, doing coding katas, or even just experimenting with new technologies, the key is to dedicate time to growing as a developer—or, as Uncle Bob says, to becoming a professional programmer.
 
 Since I've started doing it, I’ve found that the more I practice outside of work, the better I perform when I’m on the job. 
 Working on side projects, for instance, has exposed me to different challenges and has helped me think more creatively when solving problems at work. 
