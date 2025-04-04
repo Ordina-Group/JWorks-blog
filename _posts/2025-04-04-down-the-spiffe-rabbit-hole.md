@@ -40,15 +40,21 @@ We assumed attending these three talks would connect the dots:
 Here’s a breakdown of each talk and what we got from them.
 
 ### Talk 1: IAM for AI Agents
-> “Identity for Autonomous AI” – [Matthew Bates, Cofide](https://kccnceu2025.sched.com/event/1tx8O/iam-agent-identity-for-autonomous-ai-matthew-bates-cofide?iframe=yes&w=100%&sidebar=yes&bg=no)
+> “Identity for Autonomous AI” – [Matthew Bates, Cofide](https://kccnceu2025.sched.com/event/1tx8O/iam-agent-identity-for-autonomous-ai-matthew-bates-cofide?iframe=yes&w=100%&sidebar=yes&bg=no){:target="_blank" rel="noopener noreferrer"}
 
-The focus was on AI agents—multiple LLMs collaborating autonomously—and how that changes the IAM game. 
-These agents resemble microservices in some ways but bring in unique challenges around trust, delegation, and identity across human-machine boundaries.
+This talk dove into the evolving world of AI agents—think multiple large language models (LLMs) working together, executing tasks autonomously. 
+While these agents feel a bit like microservices, they also stretch identity and access management (IAM) in strange new ways. 
+You're not just securing APIs anymore—you're managing trust between human users, autonomous bots, and potentially other bots they spin up on the fly.
 
-SPIFFE popped up as a promising foundation, but the talk mostly stayed high-level. Cool concept, but we didn’t walk out with practical SPIFFE insights.
+For those unfamiliar, IAM (Identity and Access Management) is the practice of defining and managing who (or what) can access what resources, and under what conditions. 
+In cloud-native environments, IAM is already complex—but throw in autonomous decision-making and dynamic collaboration, and it gets even hairier.
+
+SPIFFE popped up as a promising foundation. 
+That piqued our interest—but the talk mostly stayed at a conceptual level. 
+It laid out the problem space well, especially the idea that AI agents need identity just like workloads do, but it didn’t give us much in the way of practical guidance or hands-on use of SPIFFE.
 
 ### Talk 2: SPIFFE for WebAssembly
-> “Universal Identity for WebAssembly Workloads” – [Cosmonic & Adobe](https://kccnceu2025.sched.com/event/1tx8U/spiffe-in-practice-universal-identity-for-webassembly-workloads-joonas-bergius-cosmonic-colin-murphy-adobe?iframe=yes&w=100%&sidebar=yes&bg=no)
+> “Universal Identity for WebAssembly Workloads” – [Cosmonic & Adobe](https://kccnceu2025.sched.com/event/1tx8U/spiffe-in-practice-universal-identity-for-webassembly-workloads-joonas-bergius-cosmonic-colin-murphy-adobe?iframe=yes&w=100%&sidebar=yes&bg=no){:target="_blank" rel="noopener noreferrer"}
 
 This was hands-down the most “concrete” talk. 
 They walked through how wasmCloud adopted SPIFFE, from conceptual design all the way to production.
@@ -57,16 +63,16 @@ We saw SPIFFE in action: issuing identities to WebAssembly modules, attesting wo
 It felt like *this* was the use case SPIFFE was born for—multi-cloud, portable workloads with high security demands.
 
 But even here, the path wasn’t smooth. 
-Their SPIFFE journey involved significant custom integrations, and the learning curve was evident.
+Their SPIFFE journey involved significant custom integrations, and reflected a steep learning curve.
 
 ### Talk 3: Developer-Centric Identity
-> “Workload Identity for Humans” – [Vish Abrams, Heroku](https://kccnceu2025.sched.com/event/1txEa/workload-identity-for-humans-a-twelve-factor-approach-vish-abrams-heroku?iframe=yes&w=100%&sidebar=yes&bg=no)
+> “Workload Identity for Humans” – [Vish Abrams, Heroku](https://kccnceu2025.sched.com/event/1txEa/workload-identity-for-humans-a-twelve-factor-approach-vish-abrams-heroku?iframe=yes&w=100%&sidebar=yes&bg=no){:target="_blank" rel="noopener noreferrer"}
 
 This one hit close to home. 
 Instead of focusing on infra, it looked at how SPIFFE could be made more developer-friendly. 
 The takeaway: SPIFFE is powerful but often too platform-focused. Developers are left building their own identity solutions on top of SPIFFE primitives.
 
-It introduced a layered approach—think “Twelve-Factor Identity”—designed to abstract away the SPIFFE internals and provide a cleaner DX.
+It introduced a layered approach—think “Twelve-Factor Identity”—designed to abstract away the SPIFFE internals and provide a cleaner developer experience.
 
 We appreciated the focus, but again, it felt like the developer story around SPIFFE is still maturing.
 
@@ -81,7 +87,7 @@ So we took matters into our own hands.
 
 Our curiosity led us down a rabbit hole of blog posts, docs, and forums. 
 A major kickstarter? 
-[Our colleague Nicholas’ excellent walkthrough on going password-less with SPIFFE in a multi-cloud environment](#).
+[Our colleague Nicholas’ excellent walkthrough on going password-less with SPIFFE in a multi-cloud environment](https://blog.ordina-jworks.io/security/2023/08/30/spiffe.html){:target="_blank" rel="noopener noreferrer"}.
 
 His post walks through a hands-on implementation of SPIFFE in a Kubernetes cluster—from setting up `cert-manager`, deploying SPIFFE, and configuring AWS Roles Anywhere, all the way to securely accessing S3 via short-lived mTLS certificates.
 
@@ -113,11 +119,11 @@ Services get identities via agents—no more hardcoded tokens or custom auth log
 
 ### Where SPIFFE Shines (vs Alternatives)
 
-| Alternative         | Why SPIFFE Wins                        |
-|---------------------|----------------------------------------|
+| Alternative          | Why SPIFFE Wins                        |
+|----------------------|----------------------------------------|
 | K8s Service Accounts | Works across *all* platforms           |
-| Cloud IAM            | Cloud-agnostic, no lock-in             |
-| Vault                | Purpose-built for identity, not secrets|
+| Cloud vendor IAM     | Cloud-agnostic, no lock-in             |
+| Hashicorp Vault      | Purpose-built for identity, not secrets|
 | Custom mTLS          | Auto cert rotation, built-in attestation|
 | OAuth/OIDC           | Peer-to-peer auth, no central server   |
 | Service Mesh         | Identity layer works *with or without* a mesh|
@@ -125,12 +131,11 @@ Services get identities via agents—no more hardcoded tokens or custom auth log
 ### But Here’s the Catch: Implementation Isn’t Trivial
 
 **1. Technical Hurdles:**
-- SPIRE servers need to be deployed and reachable
+- SPIRE servers need to be deployed and reachable  (Link spire servers doc here)
 - Agents must be placed on *all* workload hosts
 - It requires stable networking and some serious infra hygiene
 
 **2. Organizational Challenges:**
-- Teams need to understand PKI and attestation
 - Security, DevOps, and app teams must collaborate
 - Observability and monitoring of identities is a must
 
@@ -140,19 +145,20 @@ Services get identities via agents—no more hardcoded tokens or custom auth log
 
 ## Conclusion: Does SPIFFE Live Up to the Hype?
 
-**Yes—but only if you’re facing the right problems.**
+**Yes—but only if you’re solving the kind of problems SPIFFE was built for.**
 
-SPIFFE is *not* a silver bullet. 
-It’s a solid foundation for service identity in complex, cloud-native environments. 
-If you’ve ever had to scale mTLS across cloud boundaries or build identity from scratch, SPIFFE will feel like a breath of fresh air.
+SPIFFE isn’t a one-size-fits-all solution, and it definitely isn’t plug-and-play. 
+But in the right context—think multi-cloud, hybrid infrastructure, zero-trust architecture, or service-to-service authentication at scale—it starts to shine. It replaces duct-taped identity solutions with something far more robust, portable, and principled.
 
-But if you’re running a single Kubernetes cluster with simple service communication? 
-The SPIFFE overhead may be more pain than gain.
+That said, the learning curve is real. SPIFFE comes with operational overhead, new infrastructure, and a need for solid PKI and identity expertise. 
+If your architecture is still fairly simple—say, a single Kubernetes cluster with minimal external integrations—you might not feel the pain that SPIFFE is designed to address. 
+Not yet, anyway.
 
-**SPIFFE isn’t magic.** 
-It’s not hype either.
-It’s a sophisticated solution to a real and nasty problem. 
-If that problem is on your roadmap, SPIFFE might just be the best path forward.
+What impressed us most was the clarity of its vision: a universal identity layer for workloads, decoupled from cloud providers, platforms, or custom logic. 
+It’s not magic—but it’s not fluff either. It solves real problems, in a clean, standardized way. 
+That’s rare.
 
-So, the question remains : Is it something we need to adopt or look into?
-It is at least a fascinating rabbit hole we will for sure dive into in the near future.
+So… should we adopt SPIFFE?
+That part remains an open question. 
+But after KubeCon, it’s no longer just hype for us—it’s a serious topic worth exploring further. 
+And as systems grow more complex and distributed, we're pretty sure we'll find ourselves down the SPIFFE rabbit hole again.
