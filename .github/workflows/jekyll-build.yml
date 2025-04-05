@@ -28,6 +28,6 @@ jobs:
           bundler-cache: true
           cache-version: 0
       - name: Setup ImageMagick
-        uses: mfinelli/setup-imagemagick@v6
+        uses: mfinelli/setup-imagemagick@9b725c21ddff33dd8f153c821514c61eabfa7d8f # v6
       - name: Build with Jekyll
         run: bundle exec jekyll build
