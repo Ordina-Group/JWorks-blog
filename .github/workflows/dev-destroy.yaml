@@ -15,7 +15,7 @@ jobs:
   destroy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1.11.0
+      - uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
         id: repository-token
         with:
           app-id: ${{ vars.ORDINA_GROUP_BOT_APP_ID }}
@@ -30,7 +30,7 @@ jobs:
         run: git config --global url."https://${{ vars.ORDINA_GROUP_BOT_APP_ID }}:${{ steps.repository-token.outputs.token }}@github".insteadOf https://github
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
+        uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
         with:
           role-to-assume: ${{ env.AWS_ROLE }}
           aws-region: eu-west-1
