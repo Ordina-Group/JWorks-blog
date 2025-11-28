@@ -4,7 +4,6 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     base64 (0.2.0)
-    benchmark (0.4.0)
     bigdecimal (3.1.9)
     blur_image (0.0.1)
       mini_magick
@@ -62,8 +61,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     mercenary (0.4.0)
-    mini_magick (5.2.0)
-      benchmark
+    mini_magick (5.3.1)
       logger
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -93,7 +91,7 @@ DEPENDENCIES
   jekyll-paginate (= 1.1.0)
   jekyll-redirect-from (= 0.16.0)
   jekyll-sass-converter (= 3.1.0)
-  mini_magick (= 5.2.0)
+  mini_magick (= 5.3.1)
 
 RUBY VERSION
    ruby 3.2.2p53
