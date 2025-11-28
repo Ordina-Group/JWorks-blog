@@ -426,18 +426,6 @@ michael_vervloet:
   email: michael.vervloet@ordina.be
   bio: Michael is a full stack JavaScript/TypeScript developer specialising himself in backend development with NodeJs and Express and has a solid background in frontend/hybrid mobile development. As a member of Ordina's core 'Internet of Things' team he has collaborated on some challenging and innovative IoT applications.
   inactive: true
-ines_van_stappen:
-  first_name: Ines
-  last_name: Van Stappen
-  permalink: /author/ines-van-stappen/
-  avatar: ines-van-stappen.jpg
-  linkedin: inesvanstappen
-  github: inesvanstappen
-  title: JavaScript Developer
-  title2: Frontend engineer
-  email: ines.vanstappen@ordina.be
-  bio: Ines is a frontend developer, passionate about creating Angular applications. She is always open for trying new technologies or trying things in new and exciting ways.
-  inactive: true
 chris_de_bruyne:
   first_name: Chris
   last_name: De Bruyne
